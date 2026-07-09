@@ -13,11 +13,14 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
-    "astro": "^6.0.2"
+    "astro": "6.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.1",
+    "@tailwindcss/vite": "4.2.1",
     "lucide-astro": "^0.556.0",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "4.2.1"
+  },
+  "overrides": {
+    "vite": "7.3.1"
   }
 }
