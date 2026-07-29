@@ -34,6 +34,16 @@ const actualOgImage = ogImage || '/images/logo.webp';
     <meta name="description" content={description} />
     <link rel="canonical" href={actualCanonicalURL} />
 
+    <!-- Google Analytics (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-S7B8Y2CM6V"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S7B8Y2CM6V');
+    </script>
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={actualCanonicalURL} />
