@@ -28,6 +28,14 @@ const actualOgImage = ogImage || '/images/logo.webp';
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PMWWXQ7D');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
@@ -36,16 +44,6 @@ const actualOgImage = ogImage || '/images/logo.webp';
 
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="XZjzNmStu4AUY2NzGIwVKuKnyxP4eKNU8jyPcojMx4A" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R0LVX6XD5R"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-R0LVX6XD5R');
-    </script>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -120,6 +118,11 @@ const actualOgImage = ogImage || '/images/logo.webp';
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMWWXQ7D"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     {showScrollProgress && (
       <div class="fixed top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#A65F4C] via-[#DD8574] to-[#F2EADD] z-50 origin-left scale-x-0 transition-transform duration-75" id="scroll-progress"></div>
     )}
