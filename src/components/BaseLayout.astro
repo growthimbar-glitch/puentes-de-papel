@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Navbar from './Navbar.astro';
+import Footer from './Footer.astro';
 
 interface Props {
   title: string;
@@ -124,9 +126,15 @@ const actualOgImage = ogImage || '/images/logo.webp';
     <!-- End Google Tag Manager (noscript) -->
 
     {showScrollProgress && (
-      <div class="fixed top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#A65F4C] via-[#DD8574] to-[#F2EADD] z-50 origin-left scale-x-0 transition-transform duration-75" id="scroll-progress"></div>
+      <div class="fixed top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#A65F4C] via-[#DD8574] to-[#F2EADD] z-[60] origin-left scale-x-0 transition-transform duration-75" id="scroll-progress"></div>
     )}
 
-    <slot />
+    <Navbar />
+
+    <main id="contenido">
+      <slot />
+    </main>
+
+    <Footer />
   </body>
 </html>

@@ -60,10 +60,22 @@ El archivo `.env.example` se conserva como plantilla para futuras integraciones.
 ├── public/              # Archivos estáticos (imágenes, fuentes, favicons)
 ├── src/
 │   ├── components/      # Componentes reutilizables de Astro
-│   │   ├── BaseLayout.astro       # Layout base (head, SEO, animaciones)
+│   │   ├── BaseLayout.astro       # Layout base (head, SEO, navbar, footer)
+│   │   ├── Navbar.astro           # Barra de navegación sticky compartida
+│   │   ├── Footer.astro           # Pie de página completo compartido
 │   │   └── Card.astro             # Tarjeta reutilizable
+│   ├── content/         # Contenido de colecciones
+│   │   └── noticias/              # Notas de la sección Noticias (Markdown)
+│   ├── content.config.ts # Definición de la colección "noticias"
+│   ├── consts.ts        # Configuración central (nav, redes, contacto, forms, banco)
 │   ├── pages/           # Páginas del sitio (rutas automáticas de Astro)
-│   │   └── index.astro            # Página principal (landing completa)
+│   │   ├── index.astro                 # Home (resumen + CTA + enlaces)
+│   │   ├── sobre-el-proyecto.astro     # Historia, misión, equipo, esencia
+│   │   ├── formas-de-participar.astro  # Voluntariado, donaciones, colaborar
+│   │   ├── instituciones.astro         # Residencias, escuelas, empresas
+│   │   └── noticias/
+│   │       ├── index.astro             # Listado de noticias
+│   │       └── [...slug].astro         # Detalle de cada nota
 │   └── styles/          # Estilos globales CSS
 ├── .env.example         # Plantilla de variables de entorno (sin variables requeridas)
 ├── astro.config.mjs     # Configuración del proyecto Astro

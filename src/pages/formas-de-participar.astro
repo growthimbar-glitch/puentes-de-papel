@@ -1,0 +1,235 @@
+---
+import { Heart, Users, Building, Send, ArrowRight, CreditCard, HandHeart, Sparkles } from 'lucide-astro';
+import BaseLayout from '../components/BaseLayout.astro';
+import { FORMS, BANK } from '../consts';
+
+// TODO (fase SEO on-page): reescribir title y description definitivos.
+const title = 'Formas de participar - Puentes de Papel';
+const description = 'Sumate a Puentes de Papel: participá como voluntario/a, como persona mayor, hacé una donación o colaborá con el proyecto que conecta generaciones.';
+---
+
+<BaseLayout title={title} description={description} showAnimations={true}>
+  <div class="font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+
+    <!-- Encabezado de página -->
+    <section class="bg-[#F2EADD] py-16 md:py-20">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+        <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Sumate</span>
+        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-2 mb-4">
+          Formas de participar
+        </h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Hay muchas maneras de tender un puente. Elegí la que mejor se adapte a vos.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- Inscripción: voluntario / adulto mayor --- -->
+    <section id="inscripcion" class="py-24 bg-white sr-fade-up">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Sé parte del programa</h2>
+          <p class="text-xl text-slate-600 leading-relaxed">
+            Si te interesa participar como voluntario o conocés a una persona mayor que quiera compartir sus historias, completá el formulario de inscripción.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <!-- Voluntario/a -->
+          <div class="bg-[#FCF9F5] rounded-[2.5rem] border border-[#A65F4C]/10 p-8 md:p-10 flex flex-col text-left hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
+              <Users class="w-7 h-7" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero ser voluntario/a</h3>
+            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
+              Sumate para acompañar, escribir y escuchar. Vas a recibir una capacitación inicial y a formar parte de una comunidad que combate la soledad.
+            </p>
+            <a
+              href={FORMS.voluntarios}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white hover:bg-[#DD8574] text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer btn-shine"
+            >
+              Inscribirme como voluntario/a
+              <Send class="w-5 h-5" />
+            </a>
+          </div>
+
+          <!-- Adulto mayor -->
+          <div class="bg-[#FCF9F5] rounded-[2.5rem] border border-[#A65F4C]/10 p-8 md:p-10 flex flex-col text-left hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
+              <Heart class="w-7 h-7 fill-current" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero participar como adulto mayor</h3>
+            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
+              Compartí tus historias, memorias y saberes. Vas a encontrar un espacio para sentirte escuchado, acompañado y valorado.
+            </p>
+            <a
+              href={FORMS.adultosMayores}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+            >
+              Inscribirme como adulto mayor
+              <Send class="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+
+        <p class="text-center text-lg text-slate-600 mt-12">
+          ¿Todavía no conocés el proyecto?{' '}
+          <a href="/sobre-el-proyecto" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé cómo funciona</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- Colaborar --- -->
+    <section id="colaborar" class="py-24 md:py-28 bg-[#FCF9F5] border-y border-[#A65F4C]/5 relative overflow-hidden sr-fade-up">
+      <!-- Floating decorative shape in background -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#A65F4C]/5 rounded-full filter blur-2xl pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-80 h-80 bg-amber-100/30 rounded-full filter blur-2xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
+        <!-- Encabezado -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="inline-flex items-center gap-1.5 bg-[#A65F4C]/10 border border-[#A65F4C]/15 text-[#A65F4C] text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider mb-6">
+            Colaborá
+          </span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-6">
+            Colaborá con Puentes de Papel
+          </h2>
+          <div class="space-y-4 text-xl text-slate-600 leading-relaxed font-light text-pretty">
+            <p>
+              Detrás de cada carta, cada actividad y cada proyecto hay personas que dedican tiempo, trabajo y compromiso para que esta iniciativa siga creciendo.
+            </p>
+            <p>
+              Tu aporte nos ayuda a sostener materiales, impresiones, traslados, actividades y nuevas oportunidades para seguir construyendo vínculos entre generaciones.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tres formas de colaborar -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <!-- Opción 1: Quiero colaborar -->
+          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-[#A65F4C] mb-5">
+              <HandHeart class="w-7 h-7" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero colaborar</h3>
+            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
+              Para realizar una donación libre y voluntaria.
+            </p>
+            <a href="#datos-transferencia" class="mt-6 inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white hover:bg-[#DD8574] text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer btn-shine">
+              <span>Quiero colaborar</span>
+              <ArrowRight class="w-5 h-5" />
+            </a>
+          </div>
+
+          <!-- Opción 2: Quiero ser embajador/a -->
+          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
+            <div class="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-[#A65F4C] mb-5">
+              <Users class="w-7 h-7" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero ser embajador/a</h3>
+            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
+              Para quienes desean acompañar activamente el crecimiento del proyecto y formar parte de nuestra comunidad de colaboradores.
+            </p>
+            <a href="#datos-transferencia" class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+              <span>Quiero ser embajador/a</span>
+              <ArrowRight class="w-5 h-5" />
+            </a>
+          </div>
+
+          <!-- Opción 3: Quiero asociarme -->
+          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#A65F4C] mb-5">
+              <Building class="w-7 h-7" />
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero asociarme</h3>
+            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
+              Para personas, organizaciones o futuras empresas interesadas en acompañar de forma periódica el desarrollo de Puentes de Papel.
+            </p>
+            <a href="/instituciones" class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+              <span>Quiero asociarme</span>
+              <ArrowRight class="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Datos de Transferencia Bancaria -->
+        <div class="max-w-xl mx-auto">
+          <div id="datos-transferencia" class="p-8 bg-white border border-[#A65F4C]/10 rounded-3xl text-left w-full shadow-sm scroll-mt-24">
+            <p class="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
+              <CreditCard class="w-5 h-5 text-[#A65F4C]" />
+              Datos para transferencia bancaria:
+            </p>
+
+            <div class="space-y-3 text-base text-slate-700">
+              <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                <span class="text-slate-500 font-medium">Banco:</span>
+                <span class="font-bold text-slate-800">{BANK.banco}</span>
+              </div>
+              <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                <span class="text-slate-500 font-medium">Titular:</span>
+                <span class="font-bold text-slate-800">{BANK.titular}</span>
+              </div>
+              <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                <span class="text-slate-500 font-medium">CUIT:</span>
+                <span class="font-bold text-slate-800">{BANK.cuit}</span>
+              </div>
+              <div class="flex justify-between border-b border-slate-200/60 pb-2">
+                <span class="text-slate-500 font-medium">Nº de Cuenta:</span>
+                <span class="font-bold text-slate-800">{BANK.cuenta}</span>
+              </div>
+              <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
+                <span class="text-slate-500 font-medium">Alias:</span>
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-slate-800 font-mono select-all">{BANK.alias}</span>
+                  <button
+                    class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
+                    onclick={`const btn=this; navigator.clipboard.writeText('${BANK.alias}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
+                  >
+                    Copiar
+                  </button>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500 font-medium">CBU:</span>
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-slate-800 font-mono text-xs truncate max-w-[130px] select-all" title={BANK.cbu}>{BANK.cbu}</span>
+                  <button
+                    class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
+                    onclick={`const btn=this; navigator.clipboard.writeText('${BANK.cbu}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
+                  >
+                    Copiar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --- Interlinking: instituciones --- -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl">
+        <div class="bg-[#F2EADD]/50 border border-[#A65F4C]/10 rounded-[2.5rem] p-8 md:p-12 text-center">
+          <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
+            <Sparkles class="w-7 h-7" />
+          </div>
+          <h2 class="text-3xl font-black text-slate-900 mb-4">¿Representás una empresa, residencia o institución?</h2>
+          <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Hay formas específicas de colaborar y trabajar junto a nosotros desde el ámbito institucional.
+          </p>
+          <a href="/instituciones" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300 btn-shine">
+            Ver opciones para instituciones
+            <ArrowRight class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
