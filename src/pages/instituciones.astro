@@ -1,0 +1,192 @@
+---
+import { Image } from 'astro:assets';
+import { Building, Send, Coins, Printer, Truck, Megaphone, Gift, PenTool, Users, ArrowRight, Heart } from 'lucide-astro';
+import BaseLayout from '../components/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { FORMS } from '../consts';
+
+// TODO (fase SEO on-page): reescribir title y description definitivos.
+const title = 'Instituciones - Puentes de Papel';
+const description = 'Residencias, hogares, instituciones educativas, empresas y organizaciones: trabajá junto a Puentes de Papel para generar encuentros intergeneracionales.';
+---
+
+<BaseLayout title={title} description={description} showAnimations={true}>
+  <div class="font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+
+    <!-- Encabezado de página -->
+    <section class="bg-[#F2EADD] py-16 md:py-20">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+        <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Trabajemos juntos</span>
+        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-2 mb-4">
+          Instituciones y organizaciones
+        </h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Residencias, escuelas, empresas y organizaciones que creen en el poder del encuentro humano.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- Residencias --- -->
+    <section id="residencias" class="py-24 bg-white relative overflow-hidden sr-fade-up">
+      <!-- Floating decorative shape -->
+      <div class="absolute -right-16 -top-16 text-orange-100/40 pointer-events-none select-none">
+        <Building class="w-32 h-32" />
+      </div>
+
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl text-center relative z-10">
+        <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase mb-3 inline-block">Residencias y hogares</span>
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+          ¿Trabajás en una residencia o conocés una?
+        </h2>
+        <p class="text-xl text-slate-600 font-light leading-relaxed max-w-2xl mx-auto mb-10 text-pretty">
+          Puentes de Papel trabaja junto a residencias y hogares de adultos mayores para generar espacios de encuentro, escucha y conexión entre generaciones. Si representás una institución o conocés una residencia que pueda estar interesada en participar, nos encantaría conocerla.
+        </p>
+        <a
+          href={FORMS.residencias}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-[#A65F4C] text-white hover:bg-[#DD8574] text-lg font-bold px-8 py-4 rounded-full hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3 shadow-md btn-shine cursor-pointer"
+        >
+          Quiero sumar una residencia
+          <Send class="w-5 h-5" />
+        </a>
+      </div>
+    </section>
+
+    <!-- --- Instituciones educativas --- -->
+    <section id="instituciones-educativas" class="py-24 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-5xl">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="w-full md:w-1/2">
+            <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase mb-3 inline-block">Instituciones educativas</span>
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-5">Puentes entre generaciones</h2>
+            <p class="text-lg text-slate-600 leading-relaxed font-light mb-6">
+              Una propuesta que vincula instituciones educativas con residencias, hogares y espacios de personas mayores mediante actividades de intercambio, escritura, diálogo y aprendizaje compartido.
+            </p>
+            <p class="text-lg text-slate-600 leading-relaxed font-light">
+              Llevamos la experiencia intergeneracional al aula, generando aprendizajes significativos para estudiantes y momentos de encuentro para las personas mayores.
+            </p>
+          </div>
+          <div class="w-full md:w-1/2">
+            <Image
+              src="/images/puentes-de-papel-encuentro-generacional-voluntaria-adulta-mayor.webp"
+              width={520}
+              height={400}
+              alt="Encuentro intergeneracional entre una voluntaria joven y una adulta mayor en el marco del proyecto Puentes de Papel"
+              class="w-full h-[340px] object-cover rounded-[2.5rem] border-4 border-white shadow-md"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- Empresas y Organizaciones (Aliados) --- -->
+    <section id="empresas" class="py-24 bg-white relative overflow-hidden sr-fade-up">
+      <!-- Floating decorative shape -->
+      <div class="absolute left-10 bottom-10 text-orange-100/30 pointer-events-none select-none">
+        <Heart class="w-24 h-24" />
+      </div>
+
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+        <!-- Cabecera minimalista -->
+        <div class="max-w-3xl mx-auto mb-16">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase mb-3 inline-block">Empresas y Organizaciones</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">
+            Construyamos puentes juntos
+          </h2>
+          <p class="text-xl text-slate-600 font-light leading-relaxed max-w-2xl mx-auto text-pretty">
+            Unimos fuerzas con marcas y organizaciones que creen en el poder del encuentro humano y la empatía para transformar realidades.
+          </p>
+        </div>
+
+        <!-- Formas de colaborar (Flex Tags) -->
+        <div class="flex flex-wrap justify-center gap-3.5 max-w-4xl mx-auto mb-20">
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Coins class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Aporte económico</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Printer class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Impresión</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Truck class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Logística</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Send class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Transporte</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Megaphone class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Difusión</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <PenTool class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Materiales</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Gift class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Regalos</span>
+          </div>
+          <div class="px-5 py-3.5 rounded-full border border-slate-200 bg-white hover:border-[#A65F4C]/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2.5 cursor-default select-none shadow-[0_2px_8px_-3px_rgba(0,0,0,0.05)] group">
+            <div class="text-slate-400 group-hover:text-[#A65F4C] transition-colors duration-300">
+              <Users class="w-5 h-5" />
+            </div>
+            <span class="text-base font-bold text-slate-700 group-hover:text-slate-900 transition-colors">Acompañamiento</span>
+          </div>
+        </div>
+
+        <!-- Aliados estratégicos -->
+        <div id="aliados-estrategicos" class="mt-8 border-t border-[#A65F4C]/10 pt-16 scroll-mt-24">
+          <p class="text-xs uppercase tracking-widest text-slate-400 font-extrabold mb-10">Aliados estratégicos</p>
+          <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <!-- Aliado: Munay Ruray -->
+            <div class="w-60 h-32 rounded-3xl bg-[#A65F4C] border border-[#A65F4C]/20 flex items-center justify-center px-10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <Image src="/images/munayruray.webp" width={220} height={110} alt="Logo de Munay Ruray" class="max-h-16 w-auto object-contain" />
+            </div>
+            <!-- Aliado: IMB -->
+            <div class="w-60 h-32 rounded-3xl bg-[#A65F4C] border border-[#A65F4C]/20 flex items-center justify-center px-10 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+              <Image src="/images/logo_simple_imb.png" width={220} height={110} alt="Logo de IMB" class="max-h-16 w-auto object-contain" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- CTA de cierre / interlinking --- -->
+    <section class="py-20 bg-[#FCF9F5] border-t border-orange-100/50">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl text-center">
+        <h2 class="text-3xl font-black text-slate-900 mb-4">¿Querés saber más antes de sumar tu institución?</h2>
+        <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Conocé en profundidad cómo funciona el proyecto y todas las formas de participar.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/sobre-el-proyecto" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300 btn-shine">
+            Sobre el proyecto
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          <a href="/formas-de-participar" class="inline-flex items-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 font-bold px-8 py-4 rounded-full hover:-translate-y-1 transition-all duration-300">
+            Formas de participar
+            <ArrowRight class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
