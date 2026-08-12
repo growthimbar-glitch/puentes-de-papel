@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { ArrowLeft, CalendarDays, ArrowRight } from 'lucide-astro';
 import BaseLayout from '../../components/BaseLayout.astro';
+import { newsArticleNode, breadcrumbNode } from '../../seo';
 
 export async function getStaticPaths() {
   const posts = await getCollection('noticias', ({ data }) => !data.draft);
@@ -18,11 +19,32 @@ const { Content } = await render(post);
 // TODO (fase SEO on-page): revisar title y description definitivos por nota.
 const title = `${post.data.title} - Puentes de Papel`;
 
+// En UTC: pubDate se parsea a medianoche UTC y en UTC-3 se correría un día atrás.
 const dateFormatter = new Intl.DateTimeFormat('es-AR', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
+  timeZone: 'UTC',
 });
+
+// Datos estructurados de la nota: el artículo en sí y la miga de pan.
+const path = `/noticias/${post.id}`;
+const jsonLd = [
+  newsArticleNode({
+    path,
+    title: post.data.title,
+    description: post.data.description,
+    pubDate: post.data.pubDate,
+    updatedDate: post.data.updatedDate,
+    image: post.data.image,
+    imageAlt: post.data.imageAlt,
+  }),
+  breadcrumbNode([
+    { name: 'Inicio', path: '/' },
+    { name: 'Noticias', path: '/noticias' },
+    { name: post.data.title, path },
+  ]),
+];
 ---
 
 <BaseLayout
@@ -30,8 +52,12 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
   description={post.data.description}
   ogImage={post.data.image}
   showAnimations={true}
+  ogType="article"
+  publishedTime={post.data.pubDate.toISOString()}
+  modifiedTime={(post.data.updatedDate ?? post.data.pubDate).toISOString()}
+  jsonLd={jsonLd}
 >
-  <div class="font-sans text-slate-800" style="font-family: 'Nunito', sans-serif;">
+  <div class="font-sans text-slate-800">
 
     <article class="py-16 md:py-20">
       <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-3xl">
@@ -49,7 +75,7 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
           <p class="text-xl text-slate-600 leading-relaxed font-light">{post.data.description}</p>
         </header>
 
-        {post.data.image && (
+        {post.data.image && post.data.showHeroImage && (
           <div class="rounded-[2rem] overflow-hidden border-4 border-white shadow-md mb-12">
             <Image
               src={post.data.image}
@@ -71,7 +97,7 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
             <ArrowLeft class="w-5 h-5" />
             Ver todas las noticias
           </a>
-          <a href="/formas-de-participar" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-6 py-3 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine">
+          <a href="/voluntariado-adultos-mayores" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-6 py-3 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine">
             Quiero participar
             <ArrowRight class="w-5 h-5" />
           </a>

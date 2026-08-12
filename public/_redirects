@@ -1,1 +1,7 @@
 https://puentes-de-papel.pages.dev/* https://puentesdepapel.munayruray.com/:splat 301
+
+# URLs renombradas (agosto 2026). Mantener: hay enlaces externos e indexados.
+/formas-de-participar /voluntariado-adultos-mayores 301
+/formas-de-participar/ /voluntariado-adultos-mayores 301
+/instituciones /instituciones-residencias 301
+/instituciones/ /instituciones-residencias 301

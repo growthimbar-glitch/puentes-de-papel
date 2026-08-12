@@ -71,12 +71,13 @@ El archivo `.env.example` se conserva como plantilla para futuras integraciones.
 │   ├── pages/           # Páginas del sitio (rutas automáticas de Astro)
 │   │   ├── index.astro                 # Home (resumen + CTA + enlaces)
 │   │   ├── sobre-el-proyecto.astro     # Historia, misión, equipo, esencia
-│   │   ├── formas-de-participar.astro  # Voluntariado, donaciones, colaborar
-│   │   ├── instituciones.astro         # Residencias, escuelas, empresas
+│   │   ├── voluntariado-adultos-mayores.astro  # Voluntariado, donaciones, colaborar
+│   │   ├── instituciones-residencias.astro     # Residencias, escuelas, empresas
 │   │   └── noticias/
 │   │       ├── index.astro             # Listado de noticias
 │   │       └── [...slug].astro         # Detalle de cada nota
 │   └── styles/          # Estilos globales CSS
+├── public/_redirects    # Redirects 301 de Cloudflare Pages (URLs viejas -> nuevas)
 ├── .env.example         # Plantilla de variables de entorno (sin variables requeridas)
 ├── astro.config.mjs     # Configuración del proyecto Astro
 └── package.json         # Dependencias y scripts

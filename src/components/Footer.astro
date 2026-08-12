@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Mail, ExternalLink } from 'lucide-astro';
+import { Phone, ExternalLink } from 'lucide-astro';
 import { SITE, NAV_LINKS, SOCIALS, CONTACT } from '../consts';
 
 const year = new Date().getFullYear();
@@ -49,11 +49,11 @@ const activeSocials = SOCIALS.filter((s) => s.url && s.url.length > 0);
         <ul class="space-y-3">
           <li>
             <a
-              href={`mailto:${CONTACT.email}`}
-              class="inline-flex items-center gap-2 text-slate-600 hover:text-[#A65F4C] transition-colors font-medium break-all"
+              href={CONTACT.phoneHref}
+              class="inline-flex items-center gap-2 text-slate-600 hover:text-[#A65F4C] transition-colors font-medium"
             >
-              <Mail class="w-4 h-4 shrink-0 text-[#A65F4C]" />
-              {CONTACT.email}
+              <Phone class="w-4 h-4 shrink-0 text-[#A65F4C]" />
+              {CONTACT.phone}
             </a>
           </li>
           <li>
@@ -68,7 +68,7 @@ const activeSocials = SOCIALS.filter((s) => s.url && s.url.length > 0);
             </a>
           </li>
           <li>
-            <a href="/formas-de-participar" class="text-slate-600 hover:text-[#A65F4C] transition-colors font-medium">
+            <a href="/voluntariado-adultos-mayores" class="text-slate-600 hover:text-[#A65F4C] transition-colors font-medium">
               Quiero colaborar
             </a>
           </li>

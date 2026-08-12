@@ -1,0 +1,71 @@
+---
+import { Compass, ArrowRight, ArrowLeft } from 'lucide-astro';
+import BaseLayout from '../components/BaseLayout.astro';
+import { NAV_LINKS } from '../consts';
+
+const title = 'Página no encontrada - Puentes de Papel';
+const description = 'No encontramos la página que buscabas. Volvé al inicio o explorá las secciones de Puentes de Papel.';
+
+// Los enlaces del menú, menos "Inicio": ya tiene su propio botón destacado.
+const atajos = NAV_LINKS.filter((link) => link.href !== '/');
+---
+
+<BaseLayout title={title} description={description} robots="noindex, follow">
+  <div class="font-sans text-slate-800">
+
+    <section class="bg-[#F2EADD] py-20 md:py-28">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-3xl text-center">
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-8 shadow-sm">
+          <Compass class="w-10 h-10" />
+        </div>
+
+        <p class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase mb-2">Error 404</p>
+        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+          Esta página se nos perdió
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed mb-10">
+          Puede que el enlace esté desactualizado o que hayamos movido el contenido de lugar.
+          Los puentes a veces se corren, pero siempre hay otro camino.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine"
+          >
+            <ArrowLeft class="w-5 h-5" />
+            Volver al inicio
+          </a>
+          <a
+            href="/voluntariado-adultos-mayores"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 font-bold px-8 py-4 rounded-full hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Quiero participar
+            <ArrowRight class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 bg-white">
+      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl">
+        <h2 class="text-2xl font-bold text-slate-900 text-center mb-10">
+          O seguí por acá
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {atajos.map((link) => (
+            <a
+              href={link.href}
+              class="group flex items-center justify-between gap-4 bg-[#FCF9F5] border border-[#A65F4C]/10 rounded-2xl px-6 py-5 hover:border-[#DD8574]/40 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span class="font-bold text-slate-900">{link.label}</span>
+              <ArrowRight class="w-5 h-5 text-[#A65F4C] shrink-0 group-hover:translate-x-1 transition-transform" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

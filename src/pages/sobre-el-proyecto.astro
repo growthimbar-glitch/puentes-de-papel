@@ -10,7 +10,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 ---
 
 <BaseLayout title={title} description={description} showAnimations={true}>
-  <div class="font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+  <div class="font-sans text-slate-800 overflow-hidden">
 
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">
@@ -173,7 +173,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 
         <p class="text-center text-lg text-slate-600 mt-12">
           ¿Representás una institución educativa o una residencia?{' '}
-          <a href="/instituciones" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Trabajemos juntos</a>.
+          <a href="/instituciones-residencias" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Trabajemos juntos</a>.
         </p>
       </div>
     </section>
@@ -558,24 +558,6 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
             </Card>
           </div>
         </div>
-
-        <!-- Nota en medios: reproductor de YouTube -->
-        <div class="mt-16 max-w-3xl mx-auto text-center">
-          <p class="text-xl text-slate-600 mb-8">
-            Conocé más sobre las experiencias de nuestros participantes en la nota realizada por Telefe Córdoba.
-          </p>
-          <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-lg border border-[#A65F4C]/10">
-            <iframe
-              class="absolute inset-0 w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/XZXaozydYZs"
-              title="Nota de Telefe Córdoba sobre Puentes de Papel"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -679,11 +661,11 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
             Hay muchas maneras de tender un puente: como voluntario, como persona mayor, colaborando o desde tu institución.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="/formas-de-participar" class="bg-amber-400 text-[#3B1E16] font-bold px-8 py-4 rounded-full hover:bg-amber-300 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+            <a href="/voluntariado-adultos-mayores" class="bg-amber-400 text-[#3B1E16] font-bold px-8 py-4 rounded-full hover:bg-amber-300 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
               Formas de participar
               <ArrowRight class="w-5 h-5" />
             </a>
-            <a href="/instituciones" class="bg-white text-[#A65F4C] font-bold px-8 py-4 rounded-full hover:bg-[#F2EADD] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+            <a href="/instituciones-residencias" class="bg-white text-[#A65F4C] font-bold px-8 py-4 rounded-full hover:bg-[#F2EADD] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
               <Building class="w-5 h-5" />
               Soy una institución
             </a>

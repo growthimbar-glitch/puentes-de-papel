@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { Newspaper, ArrowRight, CalendarDays } from 'lucide-astro';
 import BaseLayout from '../../components/BaseLayout.astro';
+import { breadcrumbNode } from '../../seo';
 
 // TODO (fase SEO on-page): reescribir title y description definitivos.
 const title = 'Noticias - Puentes de Papel';
@@ -12,15 +13,22 @@ const posts = (await getCollection('noticias', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
+// En UTC: pubDate se parsea a medianoche UTC y en UTC-3 se correría un día atrás.
 const dateFormatter = new Intl.DateTimeFormat('es-AR', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
+  timeZone: 'UTC',
 });
 ---
 
-<BaseLayout title={title} description={description} showAnimations={true}>
-  <div class="font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+<BaseLayout
+  title={title}
+  description={description}
+  showAnimations={true}
+  jsonLd={[breadcrumbNode([{ name: 'Inicio', path: '/' }, { name: 'Noticias', path: '/noticias' }])]}
+>
+  <div class="font-sans text-slate-800 overflow-hidden">
 
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">

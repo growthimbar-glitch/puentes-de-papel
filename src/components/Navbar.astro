@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import { Menu, Send } from 'lucide-astro';
 import { NAV_LINKS, FORMS } from '../consts';
 
-// Ruta actual para resaltar el enlace activo. Normalizamos la barra final.
 const rawPath = Astro.url.pathname;
 const currentPath = rawPath !== '/' ? rawPath.replace(/\/$/, '') : '/';
 
@@ -16,7 +15,7 @@ const isActive = (href: string) =>
     <div class="flex justify-between items-center gap-4">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 shrink-0" aria-label="Ir al inicio de Puentes de Papel">
-        <div class="w-40 sm:w-48 bg-transparent flex items-center justify-center">
+        <div class="w-36 sm:w-40 bg-transparent flex items-center justify-center">
           <Image
             src="/images/logo-horizontal.webp"
             width={192}
@@ -28,7 +27,7 @@ const isActive = (href: string) =>
       </a>
 
       <!-- Navegación desktop -->
-      <nav class="hidden md:flex items-center gap-7 font-semibold text-slate-600" aria-label="Navegación principal">
+      <nav class="hidden lg:flex items-center gap-5 lg:gap-6 font-semibold text-slate-600" aria-label="Navegación principal">
         {NAV_LINKS.map((link) => (
           <a
             href={link.href}
@@ -46,7 +45,7 @@ const isActive = (href: string) =>
       <!-- CTA + botón menú móvil -->
       <div class="flex items-center gap-3">
         <a
-          href="/formas-de-participar"
+          href="/voluntariado-adultos-mayores"
           class="hidden sm:inline-flex items-center gap-2 bg-[#A65F4C] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine"
         >
           Quiero participar
@@ -54,7 +53,7 @@ const isActive = (href: string) =>
         </a>
         <label
           for="alternar-menu"
-          class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-[#F2EADD] hover:text-[#A65F4C] transition-colors cursor-pointer"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-[#F2EADD] hover:text-[#A65F4C] transition-colors cursor-pointer"
           aria-label="Abrir menú de navegación"
         >
           <Menu class="w-6 h-6" />
@@ -62,10 +61,10 @@ const isActive = (href: string) =>
       </div>
     </div>
 
-    <!-- Menú móvil (patrón checkbox, sin JS) -->
+    <!-- Menú móvil -->
     <input id="alternar-menu" type="checkbox" class="peer hidden" />
     <nav
-      class="mt-4 bg-white rounded-2xl shadow-lg p-4 space-y-2 peer-checked:block hidden md:hidden"
+      class="mt-4 bg-white rounded-2xl shadow-lg p-4 space-y-2 peer-checked:block hidden lg:hidden"
       aria-label="Navegación principal móvil"
     >
       {NAV_LINKS.map((link) => (

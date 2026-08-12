@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
+import { jsonLdString } from '../seo';
+import { SITE } from '../consts';
 
 interface Props {
   title: string;
@@ -11,6 +13,15 @@ interface Props {
   showScrollProgress?: boolean;
   showAnimations?: boolean;
   themeColor?: string;
+  /** Para páginas que no deben indexarse (404, gracias, etc.). */
+  robots?: string;
+  /** 'article' en las notas; 'website' en el resto. */
+  ogType?: 'website' | 'article';
+  /** Solo para ogType='article'. Fechas ISO. */
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** Nodos JSON-LD propios de la página (NewsArticle, BreadcrumbList, etc.). */
+  jsonLd?: Record<string, unknown>[];
 }
 
 const {
@@ -20,11 +31,19 @@ const {
   ogImage,
   showScrollProgress = false,
   showAnimations = false,
-  themeColor = "#A65F4C"
+  themeColor = "#A65F4C",
+  robots = 'index, follow',
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  jsonLd = []
 } = Astro.props;
 
-const actualCanonicalURL = canonicalURL || new URL(Astro.url.pathname, Astro.site || 'https://puentesdepapel.munayruray.com');
-const actualOgImage = ogImage || '/images/logo.webp';
+const siteOrigin = Astro.site || SITE.url;
+
+const actualCanonicalURL = canonicalURL || new URL(Astro.url.pathname, siteOrigin);
+
+const actualOgImage = new URL(ogImage || '/images/logo.webp', siteOrigin).href;
 ---
 
 <!doctype html>
@@ -48,12 +67,19 @@ const actualOgImage = ogImage || '/images/logo.webp';
     <meta name="google-site-verification" content="XZjzNmStu4AUY2NzGIwVKuKnyxP4eKNU8jyPcojMx4A" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={actualCanonicalURL} />
+    <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={actualOgImage} />
     <meta property="og:locale" content="es_AR" />
+    {ogType === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+    {ogType === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
+    )}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -62,17 +88,15 @@ const actualOgImage = ogImage || '/images/logo.webp';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={actualOgImage} />
 
+    <!-- Datos estructurados: se arma en src/seo.ts -->
+    <script type="application/ld+json" is:inline set:html={jsonLdString(jsonLd)} />
+
     <!-- SEO adicional -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="theme-color" content={themeColor} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="/images/logo.webp" />
-
-    <!-- Import Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
     {showScrollProgress && (
       <script is:inline>
