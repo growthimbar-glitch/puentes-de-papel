@@ -23,7 +23,12 @@ const lastmodNoticias = fechasDeNoticias();
 // https://astro.build/config
 export default defineConfig({
   site: 'https://puentesdepapel.munayruray.com',
-  // Los redirects de URLs viejas están en public/_redirects (Cloudflare Pages).
+  // URLs viejas. Astro genera una página con meta refresh + canonical, que funciona
+  // en cualquier host; Railway sirve con Caddy y no lee public/_redirects.
+  redirects: {
+    '/formas-de-participar': '/voluntariado-adultos-mayores',
+    '/instituciones': '/instituciones-residencias',
+  },
   integrations: [
     sitemap({
       // Solo las notas tienen fecha real; inventarla en el resto sería ruido.

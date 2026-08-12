@@ -26,3 +26,5 @@ pnpm-debug.log*
 .antigravitycli
 .agents
 skills-lock.json
+# Este proyecto usa bun (bun.lock). Evita que un "npm install" reintroduzca el lockfile de npm.
+package-lock.json
