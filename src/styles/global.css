@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
+/* Fuentes self-hosted: el navegador baja solo el subset latino por unicode-range. */
+@import "@fontsource-variable/nunito/wght.css";
+@import "@fontsource-variable/eb-garamond/wght.css";
+@import "@fontsource-variable/eb-garamond/wght-italic.css";
+
+/* Las páginas usan la clase font-sans, que sin esto pisaría la fuente del body. */
+@theme {
+  --font-sans: 'Nunito Variable', sans-serif;
+  --font-serif: 'EB Garamond Variable', Georgia, serif;
+}
+
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito Variable', sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -127,13 +138,8 @@ body {
   transition: 0.75s ease-out;
 }
 
-/* Tipografías literarias y manuscritas */
 .font-serif-literary {
-  font-family: 'EB Garamond', Georgia, serif;
-}
-
-.font-handwritten {
-  font-family: 'Caveat', cursive;
+  font-family: 'EB Garamond Variable', Georgia, serif;
 }
 
 /* Estilos de contenido para notas de Noticias (Markdown) */
@@ -198,5 +204,26 @@ body {
   font-style: italic;
   color: #475569;
   margin: 1.5rem 0;
+}
+
+/* Video embebido en una nota: <div class="video-embed"><iframe .../></div> */
+.prose-noticia .video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 2rem 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgb(166 95 76 / 0.1);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.prose-noticia .video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 

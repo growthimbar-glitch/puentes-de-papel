@@ -1,9 +1,4 @@
-// -----------------------------------------------------------------------------
 // Configuración central del sitio Puentes de Papel
-// -----------------------------------------------------------------------------
-// Este archivo concentra los datos compartidos por navbar, footer y páginas.
-// Editá acá una sola vez y se refleja en todo el sitio.
-// -----------------------------------------------------------------------------
 
 export const SITE = {
   name: 'Puentes de Papel',
@@ -13,17 +8,16 @@ export const SITE = {
   url: 'https://puentesdepapel.munayruray.com',
 } as const;
 
-// Navegación principal (usada por navbar y footer).
+// Navegación principal
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },
   { label: 'Sobre el proyecto', href: '/sobre-el-proyecto' },
-  { label: 'Formas de participar', href: '/formas-de-participar' },
-  { label: 'Instituciones', href: '/instituciones' },
+  { label: 'Formas de participar', href: '/voluntariado-adultos-mayores' },
+  { label: 'Instituciones', href: '/instituciones-residencias' },
   { label: 'Noticias', href: '/noticias' },
 ] as const;
 
-// Formularios de Google Forms (destino final actual).
-// TODO: si en el futuro cambia la URL final del formulario, actualizar acá.
+// Formularios de Google Forms
 export const FORMS = {
   voluntarios:
     'https://docs.google.com/forms/d/e/1FAIpQLSe14EEGJmNhw72yo7nNSw-o7KzoO0cySyORClABWr1cNYVKaA/viewform',
@@ -34,20 +28,50 @@ export const FORMS = {
 } as const;
 
 // Datos de contacto.
-// TODO: reemplazar por el email real de contacto de Puentes de Papel.
 export const CONTACT = {
-  email: 'hola@puentesdepapel.munayruray.com', // TODO: email real
+  phone: '+54 9 3518 68-2293',
+  phoneHref: 'tel:+5493518682293',
 } as const;
 
 // Redes sociales. Dejá `url` vacío ('') para ocultar el ícono en el footer.
-// TODO: reemplazar los placeholders por los links reales de cada red.
 export const SOCIALS = [
-  { label: 'Instagram', url: 'https://www.instagram.com/', icon: 'instagram' }, // TODO
-  { label: 'Facebook', url: '', icon: 'facebook' }, // TODO
-  { label: 'YouTube', url: 'https://www.youtube.com/', icon: 'youtube' }, // TODO
+  { label: 'Instagram', url: 'https://www.instagram.com/_puentesdepapel_/', icon: 'instagram' },
+  { label: 'Facebook', url: '', icon: 'facebook' }, // TODO: agregar link real
+  { label: 'YouTube', url: '', icon: 'youtube' }, // TODO: agregar link real
 ] as const;
 
-// Datos bancarios para donaciones (se muestran en /formas-de-participar).
+// Referentes del equipo, para los nodos Person de JSON-LD (ver src/seo.ts).
+export const TEAM = [
+  {
+    name: 'Dana Graciano',
+    slug: 'dana-graciano',
+    jobTitle: 'Fundadora y Coordinadora General',
+    image: '/images/dana-graciano.webp',
+    description:
+      'Fundadora de Puentes de Papel. Coordina el proyecto que conecta generaciones a través del intercambio de cartas entre jóvenes y personas mayores.',
+    isFounder: true,
+  },
+  {
+    name: 'Paula Laurenti',
+    slug: 'paula-laurenti',
+    jobTitle: 'Comunicación, Marketing y Alianzas',
+    image: '/images/paula-laurenti.webp',
+    description:
+      'Coordina la comunicación institucional, las redes sociales, las campañas de difusión y el vínculo con organizaciones e instituciones.',
+    isFounder: false,
+  },
+  {
+    name: 'Rosario Ferrer',
+    slug: 'rosario-ferrer',
+    jobTitle: 'Desarrollo Institucional y Relaciones Estratégicas',
+    image: '/images/rosario-ferrer.webp',
+    description:
+      'Acompaña la planificación institucional, el desarrollo de nuevas iniciativas y la construcción de alianzas que amplían el impacto del proyecto.',
+    isFounder: false,
+  },
+] as const;
+
+// Datos bancarios para donaciones
 export const BANK = {
   banco: 'Brubank',
   titular: 'DANA PAULA GRACIANO',

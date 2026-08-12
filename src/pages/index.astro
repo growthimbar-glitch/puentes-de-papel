@@ -7,7 +7,8 @@ import { FORMS } from '../consts';
 
 const title = 'Puentes de Papel - Munay Ruray';
 const description = 'Conectando generaciones a través de historias y memorias. Puentes de Papel une a jóvenes voluntarios con personas mayores para compartir historias de vida, rescatar memorias y generar vínculos significativos.';
-const ogImage = new URL('/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp', Astro.site || 'https://puentesdepapel.munayruray.com');
+// BaseLayout la convierte en absoluta.
+const ogImage = '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp';
 
 // Tarjetas de navegación hacia las páginas principales.
 const secciones = [
@@ -19,14 +20,14 @@ const secciones = [
     text: 'Nuestra historia, misión, valores y el equipo que sostiene cada carta y cada encuentro.',
   },
   {
-    href: '/formas-de-participar',
+    href: '/voluntariado-adultos-mayores',
     icon: Heart,
     eyebrow: 'Sumate',
     title: 'Formas de participar',
     text: 'Voluntariado, participación como persona mayor, donaciones y otras maneras de colaborar.',
   },
   {
-    href: '/instituciones',
+    href: '/instituciones-residencias',
     icon: Building,
     eyebrow: 'Trabajemos juntos',
     title: 'Instituciones',
@@ -45,31 +46,11 @@ const secciones = [
 <BaseLayout
   title={title}
   description={description}
-  ogImage={ogImage.toString()}
+  ogImage={ogImage}
   showScrollProgress={true}
   showAnimations={true}
 >
-  <!-- JSON-LD: Organización y WebSite -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "Munay Ruray",
-        "url": "https://munayruray.com"
-      },
-      {
-        "@type": "WebSite",
-        "name": "Puentes de Papel",
-        "alternateName": "Puentes de Papel - Munay Ruray",
-        "url": String(Astro.url.href),
-        "description": description,
-        "publisher": { "@id": "https://munayruray.com" },
-        "inLanguage": "es-PE"
-      }
-    ]})} />
-
-  <div class="font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+  <div class="font-sans text-slate-800 overflow-hidden">
     <!-- --- 1. Hero Section --- -->
     <div class="bg-[#F2EADD]">
       <section class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl pt-12 pb-24 md:pt-20 md:pb-32 relative animate-fade-slide-up">
@@ -99,7 +80,7 @@ const secciones = [
             </p>
 
             <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
-              <a href="/formas-de-participar" class="cursor-pointer w-full sm:w-auto bg-[#A65F4C] text-white text-lg font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300 btn-shine text-center">
+              <a href="/voluntariado-adultos-mayores" class="cursor-pointer w-full sm:w-auto bg-[#A65F4C] text-white text-lg font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300 btn-shine text-center">
                 Descubre cómo participar
               </a>
               <a href="/sobre-el-proyecto" class="cursor-pointer w-full sm:w-auto group flex items-center justify-center gap-3 text-slate-700 font-bold text-lg hover:text-[#A65F4C] transition-colors">
@@ -216,7 +197,7 @@ const secciones = [
               Sé parte de Puentes de Papel
             </h2>
             <p class="text-xl text-[#F2EADD] mb-10 leading-relaxed">
-              Si te interesa participar como voluntario o conoces a una persona mayor que quiera compartir sus historias, sumate al programa. Conocé todas las <a href="/formas-de-participar" class="underline decoration-2 underline-offset-4 hover:text-white transition-colors">formas de participar</a>.
+              Si te interesa participar como voluntario o conoces a una persona mayor que quiera compartir sus historias, sumate al programa. Conocé todas las <a href="/voluntariado-adultos-mayores" class="underline decoration-2 underline-offset-4 hover:text-white transition-colors">formas de participar</a>.
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
