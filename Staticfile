@@ -1,2 +1,0 @@
-# Sin esto Caddy sirve index.html en toda ruta inexistente: 404 blando con status 200.
-index_fallback: false
