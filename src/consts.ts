@@ -8,17 +8,16 @@ export const SITE = {
   url: 'https://puentesdepapel.munayruray.com',
 } as const;
 
-// Navegación principal
+// Navegación principal. Con barra final: es la forma canónica y la que declara el sitemap.
 export const NAV_LINKS = [
   { label: 'Inicio', href: '/' },
-  { label: 'Sobre el proyecto', href: '/sobre-el-proyecto' },
-  { label: 'Formas de participar', href: '/voluntariado-adultos-mayores' },
-  { label: 'Instituciones', href: '/instituciones-residencias' },
-  { label: 'Noticias', href: '/noticias' },
+  { label: 'Sobre el proyecto', href: '/sobre-el-proyecto/' },
+  { label: 'Formas de participar', href: '/voluntariado-adultos-mayores/' },
+  { label: 'Instituciones', href: '/instituciones-residencias/' },
+  { label: 'Noticias', href: '/noticias/' },
 ] as const;
 
-// Medidas y alt reales de las imágenes que se comparten en redes. Una medida inventada
-// es peor que ninguna, así que BaseLayout omite los meta si la imagen no está acá.
+
 export const OG_IMAGES: Record<string, { width: number; height: number; alt: string }> = {
   '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp': {
     width: 2816,
@@ -37,7 +36,6 @@ export const OG_IMAGES: Record<string, { width: number; height: number; alt: str
   },
 };
 
-// El logo servía de fallback, pero es vertical (1920x2188) y las redes lo recortaban mal.
 export const OG_IMAGE_DEFAULT = '/images/puentes-de-papel-grupo-voluntarios-adultos-mayores-historias.webp';
 
 // Formularios de Google Forms

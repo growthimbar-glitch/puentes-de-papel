@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import { ArrowLeft, CalendarDays, ArrowRight } from 'lucide-astro';
 import BaseLayout from '../../components/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { newsArticleNode, breadcrumbNode } from '../../seo';
 
 export async function getStaticPaths() {
@@ -28,6 +29,11 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
 
 // Datos estructurados de la nota: el artículo en sí y la miga de pan.
 const path = `/noticias/${post.id}`;
+const migas = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Noticias', path: '/noticias' },
+  { name: post.data.title, path },
+];
 const jsonLd = [
   newsArticleNode({
     path,
@@ -38,11 +44,7 @@ const jsonLd = [
     image: post.data.image,
     imageAlt: post.data.imageAlt,
   }),
-  breadcrumbNode([
-    { name: 'Inicio', path: '/' },
-    { name: 'Noticias', path: '/noticias' },
-    { name: post.data.title, path },
-  ]),
+  breadcrumbNode(migas),
 ];
 ---
 
@@ -61,10 +63,7 @@ const jsonLd = [
 
     <article class="py-16 md:py-20">
       <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-3xl">
-        <a href="/noticias" class="inline-flex items-center gap-2 text-[#A65F4C] font-bold hover:text-[#DD8574] transition-colors mb-8">
-          <ArrowLeft class="w-5 h-5" />
-          Volver a Noticias
-        </a>
+        <Breadcrumbs items={migas} />
 
         <header class="mb-10">
           <p class="inline-flex items-center gap-1.5 text-sm font-bold text-[#A65F4C] uppercase tracking-wider mb-4">
@@ -93,11 +92,11 @@ const jsonLd = [
 
         <!-- Interlinking de cierre -->
         <div class="mt-16 pt-10 border-t border-slate-200/70 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <a href="/noticias" class="inline-flex items-center gap-2 text-[#A65F4C] font-bold hover:text-[#DD8574] transition-colors">
+          <a href="/noticias/" class="inline-flex items-center gap-2 text-[#A65F4C] font-bold hover:text-[#DD8574] transition-colors">
             <ArrowLeft class="w-5 h-5" />
             Ver todas las noticias
           </a>
-          <a href="/voluntariado-adultos-mayores" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-6 py-3 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine">
+          <a href="/voluntariado-adultos-mayores/" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-6 py-3 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine">
             Quiero participar
             <ArrowRight class="w-5 h-5" />
           </a>

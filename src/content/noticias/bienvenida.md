@@ -25,8 +25,8 @@ a mes, entre generaciones.
 
 ## ¿Querés ser parte?
 
-Si te interesa sumarte, conocé las [formas de participar](/voluntariado-adultos-mayores)
-o descubrí más [sobre el proyecto](/sobre-el-proyecto). Y si representás una
-institución, escribinos desde la sección de [instituciones](/instituciones-residencias).
+Si te interesa sumarte, conocé las [formas de participar](/voluntariado-adultos-mayores/)
+o descubrí más [sobre el proyecto](/sobre-el-proyecto/). Y si representás una
+institución, escribinos desde la sección de [instituciones](/instituciones-residencias/).
 
 ¡Gracias por acompañarnos en este camino!

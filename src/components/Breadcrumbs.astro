@@ -1,0 +1,28 @@
+---
+import { ChevronRight } from 'lucide-astro';
+
+interface Props {
+  /** Mismo array que se le pasa a breadcrumbNode(), para que no puedan divergir. */
+  items: { name: string; path: string }[];
+}
+
+const { items } = Astro.props;
+
+// Con barra final, igual que el resto de los enlaces internos y que la canónica.
+const conBarra = (ruta: string) => (ruta.endsWith('/') ? ruta : `${ruta}/`);
+---
+
+<nav aria-label="Ruta de navegación" class="mb-8">
+  <ol class="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-slate-500">
+    {items.map((item, i) => (
+      <li class="flex items-center gap-x-1.5">
+        {i > 0 && <ChevronRight class="w-4 h-4 text-slate-400 shrink-0" aria-hidden="true" />}
+        {i === items.length - 1 ? (
+          <span class="font-semibold text-slate-700" aria-current="page">{item.name}</span>
+        ) : (
+          <a href={conBarra(item.path)} class="hover:text-[#A65F4C] transition-colors">{item.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

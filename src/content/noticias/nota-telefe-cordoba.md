@@ -32,7 +32,7 @@ También podés
 ## ¿Querés ser parte?
 
 Si después de ver la nota te dan ganas de sumarte, conocé las
-[formas de participar](/voluntariado-adultos-mayores) o descubrí más
-[sobre el proyecto](/sobre-el-proyecto). Y si representás una residencia o una
+[formas de participar](/voluntariado-adultos-mayores/) o descubrí más
+[sobre el proyecto](/sobre-el-proyecto/). Y si representás una residencia o una
 institución educativa, escribinos desde la sección de
-[instituciones](/instituciones-residencias).
+[instituciones](/instituciones-residencias/).

@@ -3,11 +3,13 @@ import { Image } from 'astro:assets';
 import { Menu, Send } from 'lucide-astro';
 import { NAV_LINKS, FORMS } from '../consts';
 
-const rawPath = Astro.url.pathname;
-const currentPath = rawPath !== '/' ? rawPath.replace(/\/$/, '') : '/';
+const sinBarra = (ruta: string) => (ruta !== '/' ? ruta.replace(/\/$/, '') : '/');
+const currentPath = sinBarra(Astro.url.pathname);
 
-const isActive = (href: string) =>
-  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(href + '/');
+const isActive = (href: string) => {
+  const base = sinBarra(href);
+  return base === '/' ? currentPath === '/' : currentPath === base || currentPath.startsWith(base + '/');
+};
 ---
 
 <header class="sticky top-0 z-50 bg-[#F2EADD]/85 backdrop-blur-md border-b border-[#A65F4C]/10">
@@ -45,7 +47,7 @@ const isActive = (href: string) =>
       <!-- CTA + botón menú móvil -->
       <div class="flex items-center gap-3">
         <a
-          href="/voluntariado-adultos-mayores"
+          href="/voluntariado-adultos-mayores/"
           class="hidden sm:inline-flex items-center gap-2 bg-[#A65F4C] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#DD8574] hover:-translate-y-0.5 transition-all duration-300 btn-shine"
         >
           Quiero participar

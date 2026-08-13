@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { Newspaper, ArrowRight, CalendarDays } from 'lucide-astro';
 import BaseLayout from '../../components/BaseLayout.astro';
-import { breadcrumbNode } from '../../seo';
 
 const title = 'Noticias | Proyecto social para adultos mayores en Córdoba';
 const description = 'Novedades, encuentros e historias de Puentes de Papel, el proyecto social para adultos mayores que combate la soledad en Córdoba a través de las cartas.';
@@ -25,7 +24,6 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
   title={title}
   description={description}
   showAnimations={true}
-  jsonLd={[breadcrumbNode([{ name: 'Inicio', path: '/' }, { name: 'Noticias', path: '/noticias' }])]}
 >
   <div class="font-sans text-slate-800 overflow-hidden">
 
@@ -62,7 +60,7 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <a href={`/noticias/${post.id}`} class="group block sr-fade-up-delayed">
+              <a href={`/noticias/${post.id}/`} class="group block sr-fade-up-delayed">
                 <article class="bg-white border border-[#A65F4C]/10 rounded-[2rem] overflow-hidden shadow-sm h-full flex flex-col hover:shadow-md hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
                   {post.data.image && (
                     <div class="aspect-[16/10] overflow-hidden">
