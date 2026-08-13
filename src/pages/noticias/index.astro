@@ -5,9 +5,8 @@ import { Newspaper, ArrowRight, CalendarDays } from 'lucide-astro';
 import BaseLayout from '../../components/BaseLayout.astro';
 import { breadcrumbNode } from '../../seo';
 
-// TODO (fase SEO on-page): reescribir title y description definitivos.
-const title = 'Noticias - Puentes de Papel';
-const description = 'Novedades, encuentros e historias de la comunidad intergeneracional de Puentes de Papel.';
+const title = 'Noticias | Proyecto social para adultos mayores en Córdoba';
+const description = 'Novedades, encuentros e historias de Puentes de Papel, el proyecto social para adultos mayores que combate la soledad en Córdoba a través de las cartas.';
 
 const posts = (await getCollection('noticias', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -32,19 +31,20 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
 
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+      <div class="contenedor text-center">
         <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Novedades</span>
-        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-2 mb-4">
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
           Noticias
         </h1>
         <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Encuentros, historias y novedades de nuestra comunidad intergeneracional.
+          Encuentros, historias y novedades de nuestra comunidad: un proyecto que combate la
+          soledad de los adultos mayores a través del intercambio de cartas.
         </p>
       </div>
     </section>
 
     <section class="py-24 bg-white">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         {posts.length === 0 ? (
           <div class="text-center max-w-xl mx-auto py-16">
             <div class="w-16 h-16 mx-auto rounded-2xl bg-[#FCF9F5] border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-6">
@@ -56,6 +56,10 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
             </p>
           </div>
         ) : (
+          <>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 text-center mb-12">
+            Historias de nuestra comunidad
+          </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <a href={`/noticias/${post.id}`} class="group block sr-fade-up-delayed">
@@ -76,7 +80,7 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
                       <CalendarDays class="w-4 h-4" />
                       {dateFormatter.format(post.data.pubDate)}
                     </p>
-                    <h2 class="text-xl font-bold text-slate-900 mb-2 leading-snug">{post.data.title}</h2>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 leading-snug">{post.data.title}</h3>
                     <p class="text-slate-600 leading-relaxed font-light flex-1">{post.data.description}</p>
                     <span class="mt-5 inline-flex items-center gap-2 font-bold text-[#A65F4C] group-hover:gap-3 transition-all">
                       Leer nota
@@ -87,6 +91,7 @@ const dateFormatter = new Intl.DateTimeFormat('es-AR', {
               </a>
             ))}
           </div>
+          </>
         )}
       </div>
     </section>

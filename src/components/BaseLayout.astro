@@ -3,13 +3,15 @@ import '../styles/global.css';
 import Navbar from './Navbar.astro';
 import Footer from './Footer.astro';
 import { jsonLdString } from '../seo';
-import { SITE } from '../consts';
+import { SITE, OG_IMAGES, OG_IMAGE_DEFAULT } from '../consts';
 
 interface Props {
   title: string;
   description: string;
   canonicalURL?: URL | string;
   ogImage?: string;
+  /** Pisa el alt de OG_IMAGES; las notas mandan el suyo, más específico. */
+  ogImageAlt?: string;
   showScrollProgress?: boolean;
   showAnimations?: boolean;
   themeColor?: string;
@@ -29,6 +31,7 @@ const {
   description,
   canonicalURL,
   ogImage,
+  ogImageAlt,
   showScrollProgress = false,
   showAnimations = false,
   themeColor = "#A65F4C",
@@ -43,7 +46,10 @@ const siteOrigin = Astro.site || SITE.url;
 
 const actualCanonicalURL = canonicalURL || new URL(Astro.url.pathname, siteOrigin);
 
-const actualOgImage = new URL(ogImage || '/images/logo.webp', siteOrigin).href;
+const ogImagePath = ogImage || OG_IMAGE_DEFAULT;
+const actualOgImage = new URL(ogImagePath, siteOrigin).href;
+const ogImageMeta = OG_IMAGES[ogImagePath];
+const actualOgImageAlt = ogImageAlt || ogImageMeta?.alt;
 ---
 
 <!doctype html>
@@ -73,6 +79,13 @@ const actualOgImage = new URL(ogImage || '/images/logo.webp', siteOrigin).href;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={actualOgImage} />
+    {ogImageMeta && (
+      <>
+        <meta property="og:image:width" content={String(ogImageMeta.width)} />
+        <meta property="og:image:height" content={String(ogImageMeta.height)} />
+      </>
+    )}
+    {actualOgImageAlt && <meta property="og:image:alt" content={actualOgImageAlt} />}
     <meta property="og:locale" content="es_AR" />
     {ogType === 'article' && publishedTime && (
       <meta property="article:published_time" content={publishedTime} />
@@ -87,6 +100,7 @@ const actualOgImage = new URL(ogImage || '/images/logo.webp', siteOrigin).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={actualOgImage} />
+    {actualOgImageAlt && <meta name="twitter:image:alt" content={actualOgImageAlt} />}
 
     <!-- Datos estructurados: se arma en src/seo.ts -->
     <script type="application/ld+json" is:inline set:html={jsonLdString(jsonLd)} />

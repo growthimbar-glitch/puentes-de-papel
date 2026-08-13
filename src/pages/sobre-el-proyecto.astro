@@ -3,21 +3,27 @@ import { Image } from 'astro:assets';
 import { Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Mail, Clock, PenTool, ChevronDown, Building } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
+import { breadcrumbNode } from '../seo';
 
-// TODO (fase SEO on-page): reescribir title y description definitivos.
-const title = 'Sobre el proyecto - Puentes de Papel';
-const description = 'Conocé la historia, la misión, la visión, los valores y el equipo de Puentes de Papel, la iniciativa de Munay Ruray que conecta generaciones a través de las cartas.';
+const title = 'Puentes de Papel | Proyecto intergeneracional en Córdoba';
+const description = 'Conocé la historia, la misión y el equipo de Puentes de Papel, el proyecto intergeneracional de Munay Ruray que conecta generaciones en Córdoba.';
 ---
 
-<BaseLayout title={title} description={description} showAnimations={true}>
+<BaseLayout
+  title={title}
+  description={description}
+  showAnimations={true}
+  ogImage="/images/puentes-de-papel-grupo-voluntarios-adultos-mayores-historias.webp"
+  jsonLd={[breadcrumbNode([{ name: 'Inicio', path: '/' }, { name: 'Sobre el proyecto', path: '/sobre-el-proyecto' }])]}
+>
   <div class="font-sans text-slate-800 overflow-hidden">
 
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+      <div class="contenedor text-center">
         <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Sobre el proyecto</span>
-        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-2 mb-4">
-          El corazón de Puentes de Papel
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+          Un proyecto que conecta generaciones
         </h1>
         <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
           Una historia que empezó con cartas y hoy es una comunidad que conecta generaciones.
@@ -27,7 +33,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 
     <!-- --- About Section --- -->
     <section id="sobre-el-proyecto" class="py-24 bg-white relative sr-fade-up">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <div class="flex flex-col md:flex-row items-center gap-16">
 
           <!-- Left Image -->
@@ -37,7 +43,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
                src="/images/puentes-de-papel-grupo-voluntarios-adultos-mayores-historias.webp"
                width={500}
                height={450}
-               alt="Dos adultos mayores y dos jóvenes voluntarios reunidos alrededor de una mesa con papeles y libretas, compartiendo memorias en el proyecto Puentes de Papel"
+               alt="Intercambio generacional en Puentes de Papel: dos adultos mayores y dos jóvenes voluntarios comparten memorias alrededor de una mesa con papeles y libretas"
                title="Grupo de voluntarios y adultos mayores compartiendo historias en Puentes de Papel"
                aria-label="Sesión grupal del proyecto Puentes de Papel de Munay Ruray, promoviendo el vínculo intergeneracional a través del diálogo, la escucha activa y la escritura colaborativa."
                role="img"
@@ -61,7 +67,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
             </h2>
             <div class="space-y-6 text-xl text-slate-600 leading-relaxed">
               <p>
-                <span class="font-bold text-[#A65F4C]">Puentes de Papel</span> nació con el objetivo de conectar generaciones a través del intercambio de cartas entre jóvenes y personas mayores.
+                <span class="font-bold text-[#A65F4C]">Puentes de Papel</span> nació con el objetivo de promover el intercambio generacional a través de cartas para adultos mayores, escritas por jóvenes voluntarios.
               </p>
               <p>
                 Con el tiempo, el proyecto fue creciendo y ampliando su alcance, incorporando nuevas iniciativas orientadas al acompañamiento, la participación activa y la construcción de vínculos significativos para las personas mayores.
@@ -110,7 +116,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 
     <!-- --- Nuestros Proyectos Section --- -->
     <section id="nuestros-proyectos" class="py-24 bg-white relative sr-fade-up">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Nuestros proyectos</span>
           <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
@@ -121,7 +127,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <!-- Proyecto principal -->
           <Card variant="modern" class="bg-[#F2EADD]/60 flex flex-col text-left hover:border-[#DD8574]/30">
             <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
@@ -185,7 +191,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
         <BookOpen class="w-20 h-20" />
       </div>
 
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <!-- Section Title -->
         <div class="text-center mb-16">
           <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Nuestra esencia</span>
@@ -331,16 +337,16 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
          <Star class="w-16 h-16 fill-current" />
       </div>
 
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
+      <div class="contenedor relative z-10">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-            ¿Cómo funciona el proyecto?
+            ¿Cómo funcionan las cartas para adultos mayores?
           </h2>
           <div class="w-24 h-1.5 bg-amber-400 rounded-full mx-auto"></div>
         </div>
 
         <!-- Roadmap de pasos -->
-        <div class="relative mt-8 max-w-5xl mx-auto">
+        <div class="relative mt-8 max-w-6xl mx-auto">
           <!-- Línea conectora horizontal (desktop) -->
           <div class="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-1 bg-gradient-to-r from-rose-200 via-amber-200 to-emerald-200 rounded-full z-0"></div>
 
@@ -416,16 +422,16 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
         <Heart class="w-16 h-16" />
       </div>
 
-      <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="contenedor relative z-10">
         <!-- Encabezado Emocional -->
         <div class="text-center mb-20">
-          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">El ritmo del corazón</h2>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Cartas que se vuelven compañía</h2>
           <p class="text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
             Creemos en el valor de la paciencia. Aquí no hay inmediatez, hay construcción.
           </p>
         </div>
 
-        <div class="relative mt-16 max-w-5xl mx-auto">
+        <div class="relative mt-16 max-w-6xl mx-auto">
           <!-- Línea conectora (Desktop horizontal, Mobile vertical) -->
           <div class="hidden md:block absolute top-12 left-16 right-16 h-[2px] bg-slate-100/80 z-0"></div>
 
@@ -493,7 +499,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 
     <!-- --- Testimonials Section --- -->
     <section class="py-24 bg-white sr-fade-up">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-4xl md:text-5xl font-black text-[#A65F4C] mb-4">
             Voces que construyen puentes
@@ -563,7 +569,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
 
     <!-- --- Quiénes Somos Section --- -->
     <section id="quienes-somos" class="py-24 bg-[#FCF9F5] border-t border-orange-100/50 relative sr-fade-up">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <div class="text-center mb-16">
           <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Quiénes somos</span>
           <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
@@ -612,7 +618,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
               <div class="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-white shadow-sm bg-slate-100 group-hover:scale-105 transition-transform duration-300">
                 <Image src="/images/paula-laurenti.avif" width={128} height={128} alt="Paula Laurenti" class="w-full h-full object-cover" />
               </div>
-              <h5 class="text-xl font-bold text-slate-900 mb-3">Paula Laurenti</h5>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Paula Laurenti</h3>
               <span class="bg-[#A65F4C]/5 text-[#A65F4C] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">Comunicación, Marketing y Alianzas</span>
               <details class="group">
                 <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-[#A65F4C] font-bold [&::-webkit-details-marker]:hidden hover:text-[#DD8574] transition-colors">
@@ -633,7 +639,7 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
               <div class="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-white shadow-sm bg-slate-100 group-hover:scale-105 transition-transform duration-300">
                 <Image src="/images/rosario-ferrer.avif" width={128} height={128} alt="Rosario Ferrer" class="w-full h-full object-cover" />
               </div>
-              <h5 class="text-xl font-bold text-slate-900 mb-3">Rosario Ferrer</h5>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">Rosario Ferrer</h3>
               <span class="bg-[#A65F4C]/5 text-[#A65F4C] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">Desarrollo Institucional y Relaciones Estratégicas</span>
               <details class="group">
                 <summary class="cursor-pointer list-none inline-flex items-center gap-2 text-[#A65F4C] font-bold [&::-webkit-details-marker]:hidden hover:text-[#DD8574] transition-colors">
@@ -659,6 +665,8 @@ const description = 'Conocé la historia, la misión, la visión, los valores y 
           <h2 class="text-3xl md:text-4xl font-black text-white mb-4">¿Te gustaría ser parte de esta historia?</h2>
           <p class="text-lg text-[#F2EADD] mb-8 max-w-2xl mx-auto leading-relaxed">
             Hay muchas maneras de tender un puente: como voluntario, como persona mayor, colaborando o desde tu institución.
+            Y si querés ver el proyecto en movimiento, pasá por las{' '}
+            <a href="/noticias" class="font-bold text-white hover:text-amber-200 transition-colors underline decoration-2 underline-offset-4">noticias</a>.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="/voluntariado-adultos-mayores" class="bg-amber-400 text-[#3B1E16] font-bold px-8 py-4 rounded-full hover:bg-amber-300 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">

@@ -45,6 +45,17 @@ const organization = {
     availableLanguage: ['Spanish'],
     areaServed: 'AR',
   },
+  // Sin calle: no tenemos domicilio, pero ciudad y provincia sirven para búsquedas locales.
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Córdoba',
+    addressRegion: 'Córdoba',
+    addressCountry: 'AR',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Córdoba' },
+    { '@type': 'Country', name: 'Argentina' },
+  ],
   founder: TEAM.filter((member) => member.isFounder).map((member) => ({
     '@id': personId(member.slug),
   })),
@@ -52,9 +63,11 @@ const organization = {
     '@id': personId(member.slug),
   })),
   knowsAbout: [
+    'Voluntariado con adultos mayores',
+    'Voluntariado en Córdoba',
+    'Voluntariado social en Argentina',
+    'Acompañamiento a adultos mayores',
     'Vínculos intergeneracionales',
-    'Acompañamiento a personas mayores',
-    'Voluntariado',
     'Intercambio de cartas',
   ],
 };

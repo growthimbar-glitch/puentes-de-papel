@@ -16,7 +16,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// TODO (fase SEO on-page): revisar title y description definitivos por nota.
 const title = `${post.data.title} - Puentes de Papel`;
 
 // En UTC: pubDate se parsea a medianoche UTC y en UTC-3 se correría un día atrás.
@@ -51,6 +50,7 @@ const jsonLd = [
   title={title}
   description={post.data.description}
   ogImage={post.data.image}
+  ogImageAlt={post.data.imageAlt}
   showAnimations={true}
   ogType="article"
   publishedTime={post.data.pubDate.toISOString()}

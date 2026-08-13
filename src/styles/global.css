@@ -11,6 +11,30 @@
   --font-serif: 'EB Garamond Variable', Georgia, serif;
 }
 
+/* Ancho del contenido. Cambiar este valor mueve todo el sitio a la vez. */
+:root {
+  --ancho-contenido: 90rem;
+}
+
+.contenedor {
+  width: 100%;
+  margin-inline: auto;
+  max-width: var(--ancho-contenido);
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .contenedor {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .contenedor {
+    padding-inline: 3rem;
+  }
+}
+
 body {
   font-family: 'Nunito Variable', sans-serif;
   scroll-behavior: smooth;

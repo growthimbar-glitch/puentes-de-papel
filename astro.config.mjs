@@ -25,9 +25,10 @@ export default defineConfig({
   site: 'https://puentesdepapel.munayruray.com',
   // URLs viejas. Astro genera una página con meta refresh + canonical, que funciona
   // en cualquier host; Railway sirve con Caddy y no lee public/_redirects.
+  // Con barra final para que el canonical coincida con el de la página real y con el sitemap.
   redirects: {
-    '/formas-de-participar': '/voluntariado-adultos-mayores',
-    '/instituciones': '/instituciones-residencias',
+    '/formas-de-participar': '/voluntariado-adultos-mayores/',
+    '/instituciones': '/instituciones-residencias/',
   },
   integrations: [
     sitemap({

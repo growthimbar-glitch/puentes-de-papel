@@ -26,6 +26,9 @@ significó para ellos sumarse y cómo cambió su día a día.
   ></iframe>
 </div>
 
+También podés
+[ver la nota completa en el canal de Telefe Córdoba](https://www.youtube.com/watch?v=XZXaozydYZs).
+
 ## ¿Querés ser parte?
 
 Si después de ver la nota te dan ganas de sumarte, conocé las

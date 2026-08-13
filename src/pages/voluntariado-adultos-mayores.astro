@@ -2,39 +2,47 @@
 import { Heart, Users, Building, Send, ArrowRight, CreditCard, HandHeart, Sparkles } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import { FORMS, BANK } from '../consts';
+import { breadcrumbNode } from '../seo';
 
-// TODO (fase SEO on-page): reescribir title y description definitivos.
-const title = 'Formas de participar - Puentes de Papel';
-const description = 'Sumate a Puentes de Papel: participá como voluntario/a, como persona mayor, hacé una donación o colaborá con el proyecto que conecta generaciones.';
+const title = 'Voluntariado con Adultos Mayores en Córdoba | Puentes de Papel';
+const description = 'Sumate como voluntario/a en Córdoba y acompañá a una persona mayor a través del intercambio de cartas. Conocé cómo participar en Puentes de Papel.';
 ---
 
-<BaseLayout title={title} description={description} showAnimations={true}>
+<BaseLayout
+  title={title}
+  description={description}
+  showAnimations={true}
+  ogImage="/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp"
+  jsonLd={[breadcrumbNode([{ name: 'Inicio', path: '/' }, { name: 'Formas de participar', path: '/voluntariado-adultos-mayores' }])]}
+>
   <div class="font-sans text-slate-800 overflow-hidden">
 
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl text-center">
+      <div class="contenedor text-center">
         <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Sumate</span>
-        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mt-2 mb-4">
-          Formas de participar
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+          Voluntariado con adultos mayores en Córdoba
         </h1>
         <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Hay muchas maneras de tender un puente. Elegí la que mejor se adapte a vos.
+          Un voluntariado intergeneracionalan: escribís, escuchás y acompañás a
+          una persona mayor. Hay varias formas de sumarse; elegí la que mejor se adapte a vos.
         </p>
       </div>
     </section>
 
     <!-- --- Inscripción: voluntario / adulto mayor --- -->
     <section id="inscripcion" class="py-24 bg-white sr-fade-up">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl">
+      <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Sé parte del programa</h2>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Sé parte del programa de voluntariado social</h2>
           <p class="text-xl text-slate-600 leading-relaxed">
-            Si te interesa participar como voluntario o conocés a una persona mayor que quiera compartir sus historias, completá el formulario de inscripción.
+            Si querés hacer voluntariado con adultos mayores en Córdoba, o conocés a una persona
+            mayor que quiera compartir sus historias, completá el formulario de inscripción.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <!-- Voluntario/a -->
           <div class="bg-[#FCF9F5] rounded-[2.5rem] border border-[#A65F4C]/10 p-8 md:p-10 flex flex-col text-left hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
             <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
@@ -78,7 +86,9 @@ const description = 'Sumate a Puentes de Papel: participá como voluntario/a, co
 
         <p class="text-center text-lg text-slate-600 mt-12">
           ¿Todavía no conocés el proyecto?{' '}
-          <a href="/sobre-el-proyecto" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé cómo funciona</a>.
+          <a href="/sobre-el-proyecto" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé cómo funciona</a>{' '}
+          o mirá las{' '}
+          <a href="/noticias" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">últimas noticias</a> de la comunidad.
         </p>
       </div>
     </section>
@@ -89,18 +99,18 @@ const description = 'Sumate a Puentes de Papel: participá como voluntario/a, co
       <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#A65F4C]/5 rounded-full filter blur-2xl pointer-events-none"></div>
       <div class="absolute -left-20 -top-20 w-80 h-80 bg-amber-100/30 rounded-full filter blur-2xl pointer-events-none"></div>
 
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-6xl relative z-10">
+      <div class="contenedor relative z-10">
         <!-- Encabezado -->
         <div class="text-center max-w-3xl mx-auto mb-16">
           <span class="inline-flex items-center gap-1.5 bg-[#A65F4C]/10 border border-[#A65F4C]/15 text-[#A65F4C] text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider mb-6">
             Colaborá
           </span>
           <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-6">
-            Colaborá con Puentes de Papel
+            Sostené el acompañamiento a adultos mayores
           </h2>
           <div class="space-y-4 text-xl text-slate-600 leading-relaxed font-light text-pretty">
             <p>
-              Detrás de cada carta, cada actividad y cada proyecto hay personas que dedican tiempo, trabajo y compromiso para que esta iniciativa siga creciendo.
+              Detrás de cada carta, cada actividad y cada proyecto hay personas que dedican tiempo, trabajo y compromiso para que este voluntariado social siga creciendo.
             </p>
             <p>
               Tu aporte nos ayuda a sostener materiales, impresiones, traslados, actividades y nuevas oportunidades para seguir construyendo vínculos entre generaciones.
