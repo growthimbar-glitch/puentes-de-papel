@@ -5,8 +5,8 @@ import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import { FORMS } from '../consts';
 
-const title = 'Puentes de Papel | Cartas que unen generaciones en Córdoba';
-const description = 'Voluntariado en Córdoba, Argentina: Puentes de Papel conecta a jóvenes y adultos mayores a través del intercambio de cartas. Conocé cómo participar.';
+const title = 'Puentes de Papel | Voluntariado intergeneracional en Córdoba';
+const description = 'Voluntariado intergeneracional en Córdoba, Argentina: Puentes de Papel conecta jóvenes y adultos mayores a través de cartas. Conocé cómo sumarte.';
 // BaseLayout la convierte en absoluta.
 const ogImage = '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp';
 
@@ -39,6 +39,41 @@ const secciones = [
     eyebrow: 'Novedades',
     title: 'Noticias',
     text: 'Encuentros, historias y novedades de nuestra comunidad intergeneracional.',
+  },
+];
+
+// Las tres dudas que más frenan a alguien que está por anotarse.
+const reparos = [
+  {
+    title: 'Sin experiencia previa',
+    text: 'No hace falta formación. Te damos las pautas para escribir la primera carta.',
+  },
+  {
+    title: 'A tu ritmo',
+    text: 'Escribís cuando podés. No hay horarios fijos ni encuentros obligatorios.',
+  },
+  {
+    title: 'Con acompañamiento',
+    text: 'El equipo coordina con la residencia y está para lo que necesites.',
+  },
+];
+
+const pasos = [
+  {
+    title: 'Te inscribís',
+    text: 'Completás el formulario de voluntariado y nos contás un poco sobre vos: qué te gusta, de qué te gustaría escribir.',
+  },
+  {
+    title: 'Te vinculamos con una persona mayor',
+    text: 'Coordinamos con la residencia y te asignamos un adulto mayor. Recibís una capacitación inicial y las pautas para escribir la primera carta.',
+  },
+  {
+    title: 'Escribís y tu carta llega',
+    text: 'Escribís a mano y nosotros nos ocupamos de que llegue a destino. La respuesta vuelve por el mismo camino.',
+  },
+  {
+    title: 'El vínculo se sostiene',
+    text: 'El intercambio continúa en el tiempo y muchas veces termina en un encuentro. De ahí nacen los vínculos que combaten la soledad en la vejez.',
   },
 ];
 ---
@@ -77,7 +112,8 @@ const secciones = [
             </h2>
 
             <p class="text-xl text-slate-500 mb-10 leading-relaxed max-w-xl">
-              Puentes de Papel es un programa en Argentina que promueve vínculos y espacios de encuentro para combatir la soledad en la vejez. 
+              Puentes de Papel es un programa de voluntariado intergeneracional en Córdoba, Argentina, que promueve vínculos
+              y espacios de encuentro para combatir la soledad en la vejez.
               A través del intercambio de cartas, nacen vínculos que acompañan, y muchas veces también amistades.
             </p>
 
@@ -124,7 +160,161 @@ const secciones = [
       </section>
     </div>
 
-    <!-- --- 2. Resumen / Explorá el proyecto --- -->
+    <!-- --- 2. Qué hacemos / qué es el voluntariado intergeneracional --- -->
+    <section class="py-24 md:py-28 bg-white sr-fade-up">
+      <div class="contenedor">
+        <!-- Frase de apertura centrada, con el degradado de marca del H1. -->
+        <div class="max-w-5xl mx-auto text-center mb-20 md:mb-24">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Qué hacemos</span>
+          <p class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.2] text-balance mt-3">
+            Hay una carta que llega a una residencia de Córdoba, se lee dos veces y
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A65F4C] to-[#DD8574]">se guarda en la mesa de luz</span>.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8 lg:gap-14 text-left text-lg md:text-xl text-slate-600 leading-relaxed font-light text-pretty mt-12">
+            <p>
+              Eso es lo que buscamos: que una hoja de papel sea compañía para alguien que la espera.
+            </p>
+            <p>
+              Puentes de Papel conecta a jóvenes voluntarios con adultos mayores de residencias de
+              Córdoba, Argentina, a través de un intercambio de cartas escritas a mano.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-[#A65F4C]/10 pt-16 md:pt-20">
+          <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <h2 class="lg:col-span-5 text-3xl md:text-4xl font-black text-slate-900 leading-tight text-pretty">
+              ¿Qué es el voluntariado intergeneracional?
+            </h2>
+            <div class="lg:col-span-6 lg:col-start-7 space-y-5 text-lg md:text-xl text-slate-600 leading-relaxed font-light text-pretty">
+              <p>
+                Es un tipo de voluntariado social en el que personas de distintas edades comparten tiempo,
+                historias y afecto. No hace falta una formación previa ni una disponibilidad rígida:
+                hace falta ganas de escuchar.
+              </p>
+              <p>
+                En Puentes de Papel lo hacemos a través de cartas. Cada voluntario le escribe a un adulto
+                mayor de una residencia de Córdoba, y esa correspondencia se sostiene en el tiempo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Variante stamp: el borde punteado interno hace de sello, y no se repite en el resto del home. -->
+          <ul class="grid sm:grid-cols-3 gap-6 mt-14">
+            {reparos.map((reparo, i) => (
+              <li>
+                <Card variant="stamp" as="div" staggerDelay={i * 90} class="h-full text-center">
+                  <h3 class="text-lg font-black text-[#A65F4C] mb-2">{reparo.title}</h3>
+                  <p class="text-slate-600 leading-relaxed font-light">{reparo.text}</p>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- 3. Por qué cartas --- -->
+    <section class="py-24 md:py-28 bg-[#F2EADD] relative overflow-hidden sr-fade-up">
+      <div class="absolute -left-32 top-1/4 w-96 h-96 bg-[#DD8574] rounded-full mix-blend-multiply filter blur-[128px] opacity-25 pointer-events-none"></div>
+
+      <div class="contenedor relative z-10">
+        <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div>
+            <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">La carta</span>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight text-pretty mt-2 mb-6">
+              ¿Por qué cartas?
+            </h2>
+            <div class="space-y-5 text-lg md:text-xl text-slate-700 leading-relaxed font-light text-pretty">
+              <p>
+                Porque muchas residencias no reciben visitas frecuentes, y una carta llega igual.
+                Se relee, se guarda, se muestra a otros: acompaña mucho más allá del momento en que
+                se escribió.
+              </p>
+              <p>
+                Escribir a mano también obliga a detenerse y a elegir las palabras, y eso se nota
+                del otro lado.
+              </p>
+              <p>
+                Es, además, una forma de{' '}
+                <a href="/voluntariado-adultos-mayores/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">voluntariado con adultos mayores</a>{' '}
+                que no depende de coincidir en un horario ni de vivir cerca.
+              </p>
+            </div>
+          </div>
+
+          <div class="sr-fade-up-delayed">
+            <div class="relative max-w-lg mx-auto lg:mx-0 lg:ml-auto">
+              <!-- Hoja de atrás: sugiere que la correspondencia se acumula. -->
+              <div class="absolute inset-0 bg-white/60 border border-[#A65F4C]/10 rounded-sm rotate-[3deg] translate-x-3 translate-y-3"></div>
+
+              <div class="relative bg-white border border-[#A65F4C]/15 rounded-sm shadow-[0_20px_45px_-20px_rgba(59,30,22,0.4)] -rotate-[1.5deg] p-8 md:p-10 hover:rotate-0 transition-transform duration-500">
+                <!-- Estampilla -->
+                <div class="absolute top-7 right-7 w-14 h-16 md:w-16 md:h-20 border-2 border-dashed border-[#A65F4C]/30 rounded-sm flex items-center justify-center bg-[#FCF9F5]">
+                  <Heart class="w-6 h-6 md:w-7 md:h-7 text-[#DD8574] fill-[#DD8574]/40" />
+                </div>
+
+                <p class="font-serif-literary italic text-[#A65F4C] text-lg mb-8">Córdoba, Argentina</p>
+
+                <div class="papel-carta font-serif-literary text-xl md:text-2xl text-slate-700 leading-8 space-y-8 pr-16 md:pr-20">
+                  <p>Querida Elena:</p>
+                  <p>
+                    Esta semana empecé la facultad y pensé en vos, que siempre me decís que estudiar es "el mejor lugar para guardar las cosas". Ojalá tengas razón.
+                  </p>
+                  <p>
+                    Contame cómo anda por allá, y si el mate sigue ganándole al café.
+                  </p>
+                </div>
+
+                <p class="font-serif-literary italic text-slate-500 text-lg text-right mt-8">Un abrazo grande.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- 4. Cómo funciona --- -->
+    <section class="py-24 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
+      <div class="contenedor">
+        <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Paso a paso</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+            Cómo funciona el intercambio de cartas
+          </h2>
+          <p class="text-xl text-slate-600 leading-relaxed">
+            Desde que te inscribís hasta que llega la primera respuesta, te acompañamos en cada paso.
+          </p>
+        </div>
+
+        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+          {pasos.map((paso, i) => (
+            <li class="relative text-center sr-fade-up-delayed">
+              <!-- Hilo punteado entre pasos: el recorrido postal de la carta. Arranca al borde del
+                   círculo y termina antes del siguiente, con el círculo centrado en la columna. -->
+              {i < pasos.length - 1 && (
+                <span class="hidden lg:block absolute top-7 left-[calc(50%+2.25rem)] right-[calc(-50%+0.25rem)] border-t-2 border-dashed border-[#A65F4C]/25" aria-hidden="true"></span>
+              )}
+              <div class="w-14 h-14 mx-auto rounded-full bg-[#A65F4C] text-white flex items-center justify-center text-xl font-black mb-6">
+                {i + 1}
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3 text-balance">{paso.title}</h3>
+              <p class="text-slate-600 leading-relaxed font-light text-pretty">{paso.text}</p>
+            </li>
+          ))}
+        </ol>
+
+        <p class="text-center text-lg text-slate-600 mt-16 max-w-2xl mx-auto">
+          ¿Querés escribir?{' '}
+          <a href="/voluntariado-adultos-mayores/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Mirá las formas de participar</a>.
+          Si representás una residencia, un hogar, una escuela o una empresa,{' '}
+          <a href="/instituciones-residencias/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">sumá tu institución</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- 5. Resumen / Explorá el proyecto --- -->
     <section class="py-24 bg-white relative sr-fade-up">
       <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -158,7 +348,7 @@ const secciones = [
       </div>
     </section>
 
-    <!-- --- 3. Franja de impacto --- -->
+    <!-- --- 6. Franja de impacto --- -->
     <section class="py-20 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
       <div class="contenedor">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
@@ -187,7 +377,7 @@ const secciones = [
       </div>
     </section>
 
-    <!-- --- 4. Final Call to Action --- -->
+    <!-- --- 7. Final Call to Action --- -->
     <section class="py-24 bg-white">
       <div class="contenedor">
         <div class="bg-[#A65F4C] rounded-[3rem] p-8 md:p-24 text-center relative overflow-hidden">
@@ -227,3 +417,17 @@ const secciones = [
     </section>
   </div>
 </BaseLayout>
+
+<style>
+  /* Renglones de la carta simulada. El paso de 2rem tiene que coincidir con leading-8 del texto. */
+  .papel-carta {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(2rem - 1px),
+      rgb(166 95 76 / 0.14) calc(2rem - 1px),
+      rgb(166 95 76 / 0.14) 2rem
+    );
+    background-position: 0 0.45rem;
+  }
+</style>
