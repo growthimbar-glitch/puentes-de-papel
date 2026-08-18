@@ -30,6 +30,10 @@ export default defineConfig({
     '/formas-de-participar': '/voluntariado-adultos-mayores/',
     '/instituciones': '/instituciones-residencias/',
   },
+  // El CSS pesa ~12 KB y colgaba de él la carga de las fuentes: en línea sale un salto de red.
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     sitemap({
       // Solo las notas tienen fecha real; inventarla en el resto sería ruido.
