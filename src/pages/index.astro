@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { Heart, Users, Building, Newspaper, BookOpen, Sparkles, ArrowRight, Send } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
@@ -94,7 +93,7 @@ const pasos = [
   <div class="font-sans text-slate-800 overflow-hidden">
     <!-- --- 1. Hero Section --- -->
     <div class="bg-[#F2EADD]">
-      <section class="contenedor pt-12 pb-24 md:pt-20 md:pb-32 relative animate-fade-slide-up">
+      <section class="contenedor pt-12 pb-24 md:pt-20 md:pb-32 relative">
         <!-- Decorative Background Blobs -->
         <div class="absolute top-0 left-0 w-96 h-96 bg-[#DD8574] rounded-full mix-blend-multiply filter blur-[128px] opacity-30"></div>
         <div class="absolute top-0 right-0 w-96 h-96 bg-amber-200 rounded-full mix-blend-multiply filter blur-[128px] opacity-40"></div>
@@ -149,12 +148,15 @@ const pasos = [
             <!-- Main Image Masked -->
             <div class="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border-4 md:border-8 border-white">
               <div class="absolute inset-0 bg-[#A65F4C]/10 mix-blend-overlay z-10"></div>
-              <Image
+              <img
                 src="/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp"
+                srcset="/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria-800.webp 800w, /images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria-1200.webp 1200w, /images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp 1600w"
+                sizes="(min-width: 1440px) 672px, (min-width: 768px) 50vw, 100vw"
                 width={600}
                 height={500}
                 loading="eager"
                 fetchpriority="high"
+                decoding="async"
                 alt="Un adulto mayor y una joven voluntaria conversan animadamente sentados en una banca de parque durante una sesión del proyecto Puentes de Papel"
                 title="Joven voluntaria conversando con adulto mayor en parque — Puentes de Papel"
                 aria-label="Encuentro intergeneracional al aire libre en el proyecto Puentes de Papel de Munay Ruray, donde jóvenes escuchan y acompañan a personas mayores en el rescate de sus memorias."
