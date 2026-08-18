@@ -96,14 +96,13 @@ body {
   }
 }
 
+/* Sin opacidad: acá vive el párrafo del hero, que es el elemento LCP en mobile. */
 @keyframes fade-slide-up {
   from {
     transform: translateY(24px);
-    opacity: 0;
   }
   to {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
@@ -122,7 +121,6 @@ body {
 }
 
 .animate-fade-slide-up {
-  opacity: 0;
   animation: fade-slide-up 1000ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
