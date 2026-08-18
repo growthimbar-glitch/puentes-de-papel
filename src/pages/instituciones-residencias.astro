@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { Building, Send, Coins, Printer, Truck, Megaphone, Gift, PenTool, Users, ArrowRight, Heart } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
-import { FORMS } from '../consts';
+import { FORMS, CIFRAS } from '../consts';
 const title = 'Residencias e instituciones en Córdoba | Puentes de Papel';
 const description = 'Residencias geriátricas, hogares, escuelas y empresas: sumá tu institución a Puentes de Papel y generá encuentros intergeneracionales en Córdoba.';
 ---
@@ -37,14 +37,28 @@ const description = 'Residencias geriátricas, hogares, escuelas y empresas: sum
         <Building class="w-32 h-32" />
       </div>
 
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl text-center relative z-10">
+      <div class="contenedor text-center relative z-10">
         <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase mb-3 inline-block">Residencias y hogares</span>
         <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">
           ¿Trabajás en una residencia o conocés una?
         </h2>
-        <p class="text-xl text-slate-600 font-light leading-relaxed max-w-2xl mx-auto mb-10 text-pretty">
-          Puentes de Papel lleva su voluntariado con adultos mayores a residencias geriátricas y hogares de Córdoba, para generar espacios de encuentro, escucha y conexión entre generaciones. Si trabajás en una institución o conocés una que pueda estar interesada en participar, nos encantaría conocerla.
+        <p class="text-xl text-slate-600 font-light leading-relaxed max-w-3xl mx-auto mb-12 text-pretty">
+          Puentes de Papel lleva su voluntariado con adultos mayores a residencias geriátricas y hogares de Córdoba, Santa Fe y Buenos Aires, para generar espacios de encuentro, escucha y conexión entre generaciones. Si trabajás en una institución o conocés una que pueda estar interesada en participar, nos encantaría conocerla.
         </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+          {CIFRAS.porProvincia.map((item) => (
+            <div class="bg-[#FCF9F5] border border-[#A65F4C]/10 rounded-[2rem] py-10 px-6">
+              <p class="text-5xl font-black text-slate-900">{item.cantidad}</p>
+              <p class="text-sm font-bold text-slate-500 uppercase tracking-wide mt-2 text-balance">{item.provincia}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-lg text-slate-600 font-light leading-relaxed text-pretty max-w-3xl mx-auto mb-10">
+          Desde {CIFRAS.inicio} sumamos {CIFRAS.residencias} residencias e instituciones y hoy acompañamos
+          a más de {CIFRAS.personasMayores} personas mayores.
+        </p>
+
         <a
           href={FORMS.residencias}
           target="_blank"

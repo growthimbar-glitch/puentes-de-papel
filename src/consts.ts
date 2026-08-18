@@ -50,15 +50,52 @@ export const FORMS = {
 
 // Datos de contacto.
 export const CONTACT = {
-  phone: '+54 9 3518 68-2293',
-  phoneHref: 'tel:+5493518682293',
+  email: 'puentesdepapel@imbinstitute.com',
+  emailHref: 'mailto:puentesdepapel@imbinstitute.com',
 } as const;
 
 // Redes sociales. Dejá `url` vacío ('') para ocultar el ícono en el footer.
 export const SOCIALS = [
   { label: 'Instagram', url: 'https://www.instagram.com/_puentesdepapel_/', icon: 'instagram' },
-  { label: 'Facebook', url: '', icon: 'facebook' }, // TODO: agregar link real
-  { label: 'YouTube', url: '', icon: 'youtube' }, // TODO: agregar link real
+  { label: 'TikTok', url: 'https://www.tiktok.com/@puentes.de.papel', icon: 'tiktok' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/company/puentes-de-papel/', icon: 'linkedin' },
+] as const;
+
+// Cifras del proyecto, confirmadas por la fundadora en agosto de 2026.
+export const CIFRAS = {
+  inicio: 'abril de 2026',
+  inicioISO: '2026-04',
+  residencias: 9,
+  residenciasAlInicio: 2,
+  // El dato exacto es 83; se publica redondeado para que no envejezca a cada alta.
+  personasMayores: 80,
+  voluntarios: '+500',
+  provincias: ['Córdoba', 'Santa Fe', 'Buenos Aires'],
+  // Se publica el reparto por provincia, no la lista de instituciones.
+  porProvincia: [
+    { provincia: 'Córdoba', cantidad: 4 },
+    { provincia: 'Santa Fe', cantidad: 3 },
+    { provincia: 'Buenos Aires', cantidad: 2 },
+  ],
+} as const;
+
+export const MEDIOS = [
+  {
+    medio: 'Telefe Córdoba',
+    formato: 'Nota en televisión',
+    fecha: '20 de mayo de 2026',
+    resumen: 'Participantes de ambas generaciones cuentan cómo funciona el intercambio de cartas.',
+    url: '/noticias/nota-telefe-cordoba/',
+    urlLabel: 'Ver la nota',
+  },
+  {
+    medio: 'Radio Cristal / VCP',
+    formato: 'Entrevista en radio',
+    fecha: '18 de mayo de 2026',
+    resumen: 'Entrevista sobre el origen del proyecto y el trabajo con residencias.',
+    url: 'https://www.instagram.com/_puentesdepapel_/reel/DYe1JN9OFlw/',
+    urlLabel: 'Ver la entrevista en Instagram',
+  },
 ] as const;
 
 // Referentes del equipo, para los nodos Person de JSON-LD (ver src/seo.ts).

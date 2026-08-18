@@ -1,6 +1,6 @@
 // Datos estructurados (JSON-LD). Los datos salen de consts.ts.
 
-import { SITE, SOCIALS, CONTACT, TEAM } from './consts';
+import { SITE, SOCIALS, CONTACT, TEAM, CIFRAS } from './consts';
 
 const abs = (path: string) => new URL(path, SITE.url).href;
 
@@ -32,16 +32,18 @@ const organization = {
   description: SITE.tagline,
   slogan: SITE.tagline,
   inLanguage: 'es-AR',
+  foundingDate: CIFRAS.inicioISO,
   ...(sameAs.length > 0 && { sameAs }),
   parentOrganization: {
     '@type': 'Organization',
     name: SITE.org,
     url: SITE.orgUrl,
   },
+  email: CONTACT.email,
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer support',
-    telephone: CONTACT.phoneHref.replace('tel:', ''),
+    email: CONTACT.email,
     availableLanguage: ['Spanish'],
     areaServed: 'AR',
   },
@@ -54,6 +56,7 @@ const organization = {
   },
   areaServed: [
     { '@type': 'City', name: 'Córdoba' },
+    ...CIFRAS.provincias.map((provincia) => ({ '@type': 'State', name: provincia })),
     { '@type': 'Country', name: 'Argentina' },
   ],
   founder: TEAM.filter((member) => member.isFounder).map((member) => ({
@@ -66,9 +69,11 @@ const organization = {
     'Voluntariado con adultos mayores',
     'Voluntariado en Córdoba',
     'Voluntariado social en Argentina',
+    'Voluntariado a distancia',
     'Acompañamiento a adultos mayores',
     'Vínculos intergeneracionales',
     'Intercambio de cartas',
+    'Soledad en la vejez',
   ],
 };
 
@@ -138,6 +143,20 @@ export function newsArticleNode(article: ArticleInput) {
         ...(article.imageAlt && { caption: article.imageAlt }),
       },
     }),
+  };
+}
+
+export function faqPageNode(path: string, items: { pregunta: string; respuesta: string }[]) {
+  const url = absPage(path);
+  return {
+    '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.pregunta,
+      acceptedAnswer: { '@type': 'Answer', text: item.respuesta },
+    })),
   };
 }
 

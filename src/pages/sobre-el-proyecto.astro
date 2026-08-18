@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import { Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Mail, Clock, PenTool, ChevronDown, Building } from 'lucide-astro';
+import { Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Mail, Clock, PenTool, ChevronDown, Building, Newspaper } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
+import { CIFRAS, MEDIOS } from '../consts';
 const title = 'Sobre el proyecto | Historia y equipo de Puentes de Papel';
 const description = 'Conocé la historia, la misión y el equipo de Puentes de Papel, el proyecto intergeneracional de Munay Ruray que conecta generaciones en Córdoba.';
 ---
@@ -64,7 +65,11 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
             </h2>
             <div class="space-y-6 text-xl text-slate-600 leading-relaxed">
               <p>
-                <span class="font-bold text-[#A65F4C]">Puentes de Papel</span> nació con el objetivo de promover el intercambio generacional a través de cartas para adultos mayores, escritas por jóvenes voluntarios.
+                <span class="font-bold text-[#A65F4C]">Puentes de Papel</span> nació en {CIFRAS.inicio} con el objetivo de promover el intercambio generacional a través de cartas para adultos mayores, escritas por jóvenes voluntarios.
+              </p>
+              <p>
+                Empezó con {CIFRAS.residenciasAlInicio} residencias de Córdoba. Hoy participan {CIFRAS.residencias} residencias
+                e instituciones de Córdoba, Santa Fe y Buenos Aires, y más de {CIFRAS.personasMayores} personas mayores reciben cartas.
               </p>
               <p>
                 Con el tiempo, el proyecto fue creciendo y ampliando su alcance, incorporando nuevas iniciativas orientadas al acompañamiento, la participación activa y la construcción de vínculos significativos para las personas mayores.
@@ -564,6 +569,46 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
               </p>
             </Card>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- En los medios --- -->
+    <section id="en-los-medios" class="py-24 bg-[#F2EADD]/50 border-y border-[#A65F4C]/10 sr-fade-up">
+      <div class="contenedor">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">En los medios</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+            Puentes de Papel en la prensa
+          </h2>
+          <p class="text-xl text-slate-600 leading-relaxed text-pretty">
+            Medios de Córdoba y del país contaron cómo funciona el proyecto y qué significa para quienes participan.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {MEDIOS.map((medio) => (
+            <Card variant="modern" as="article" class="bg-white flex flex-col text-left hover:border-[#DD8574]/30">
+              <div class="w-14 h-14 rounded-2xl bg-[#F2EADD] border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
+                <Newspaper class="w-7 h-7" />
+              </div>
+              <span class="text-xs font-bold text-[#A65F4C] uppercase tracking-wider mb-2">{medio.formato}</span>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">{medio.medio}</h3>
+              <p class="text-sm font-semibold text-slate-500 mb-3">{medio.fecha}</p>
+              <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">{medio.resumen}</p>
+              {medio.url && (
+                <a
+                  href={medio.url}
+                  target={medio.url.startsWith('http') ? '_blank' : undefined}
+                  rel={medio.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  class="mt-5 inline-flex items-center gap-2 font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors"
+                >
+                  {medio.urlLabel}
+                  <ArrowRight class="w-5 h-5" />
+                </a>
+              )}
+            </Card>
+          ))}
         </div>
       </div>
     </section>

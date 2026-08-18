@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import { Heart, Users, Building, Newspaper, BookOpen, Sparkles, ArrowRight, Send } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
-import { FORMS } from '../consts';
+import { FORMS, CIFRAS } from '../consts';
 
 const title = 'Puentes de Papel | Voluntariado intergeneracional en Córdoba';
-const description = 'Voluntariado intergeneracional en Córdoba, Argentina: Puentes de Papel conecta jóvenes y adultos mayores a través de cartas. Conocé cómo sumarte.';
+const description = 'Voluntariado intergeneracional en Córdoba y en todo el país: Puentes de Papel conecta jóvenes y personas mayores a través de cartas. Conocé cómo sumarte.';
 // BaseLayout la convierte en absoluta.
 const ogImage = '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp';
 
@@ -49,13 +49,19 @@ const reparos = [
     text: 'No hace falta formación. Te damos las pautas para escribir la primera carta.',
   },
   {
-    title: 'A tu ritmo',
-    text: 'Escribís cuando podés. No hay horarios fijos ni encuentros obligatorios.',
+    title: 'Una carta por mes',
+    text: 'El intercambio es mensual o cada quince días. No hay horarios fijos.',
   },
   {
     title: 'Con acompañamiento',
     text: 'El equipo coordina con la residencia y está para lo que necesites.',
   },
+];
+
+const impacto = [
+  { icon: Users, valor: CIFRAS.voluntarios, label: 'Voluntarios' },
+  { icon: Building, valor: CIFRAS.residencias, label: 'Residencias e instituciones' },
+  { icon: Heart, valor: `+${CIFRAS.personasMayores}`, label: 'Personas mayores acompañadas' },
 ];
 
 const pasos = [
@@ -112,9 +118,9 @@ const pasos = [
             </h2>
 
             <p class="text-xl text-slate-500 mb-10 leading-relaxed max-w-xl">
-              Puentes de Papel es un programa de voluntariado intergeneracional en Córdoba, Argentina, que promueve vínculos
-              y espacios de encuentro para combatir la soledad en la vejez.
-              A través del intercambio de cartas, nacen vínculos que acompañan, y muchas veces también amistades.
+              Puentes de Papel es un programa de voluntariado intergeneracional que nació en Córdoba, Argentina,
+              y hoy llega a residencias de tres provincias. A través del intercambio de cartas creamos espacios
+              de encuentro que combaten la soledad en la vejez: nacen vínculos que acompañan, y muchas veces también amistades.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
@@ -167,7 +173,7 @@ const pasos = [
         <div class="max-w-5xl mx-auto text-center mb-20 md:mb-24">
           <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Qué hacemos</span>
           <p class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.2] text-balance mt-3">
-            Hay una carta que llega a una residencia de Córdoba, se lee dos veces y
+            Hay una carta que llega a una residencia, se lee dos veces y
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A65F4C] to-[#DD8574]">se guarda en la mesa de luz</span>.
           </p>
 
@@ -176,8 +182,8 @@ const pasos = [
               Eso es lo que buscamos: que una hoja de papel sea compañía para alguien que la espera.
             </p>
             <p>
-              Puentes de Papel conecta a jóvenes voluntarios con adultos mayores de residencias de
-              Córdoba, Argentina, a través de un intercambio de cartas escritas a mano.
+              Puentes de Papel conecta a jóvenes voluntarios con personas mayores de residencias de
+              Córdoba, Santa Fe y Buenos Aires, a través de un intercambio de cartas escritas a mano.
             </p>
           </div>
         </div>
@@ -194,13 +200,13 @@ const pasos = [
                 hace falta ganas de escuchar.
               </p>
               <p>
-                En Puentes de Papel lo hacemos a través de cartas. Cada voluntario le escribe a un adulto
-                mayor de una residencia de Córdoba, y esa correspondencia se sostiene en el tiempo.
+                En Puentes de Papel lo hacemos a través de cartas. Cada voluntario le escribe a una persona
+                mayor de una residencia, y esa correspondencia se sostiene en el tiempo. No hace falta vivir
+                en la misma ciudad: se escribe desde cualquier provincia.
               </p>
             </div>
           </div>
 
-          <!-- Variante stamp: el borde punteado interno hace de sello, y no se repite en el resto del home. -->
           <ul class="grid sm:grid-cols-3 gap-6 mt-14">
             {reparos.map((reparo, i) => (
               <li>
@@ -285,7 +291,7 @@ const pasos = [
           </h2>
           <p class="text-xl text-slate-600 leading-relaxed text-pretty">
             El intercambio funciona en cuatro pasos: te inscribís, te vinculamos con una persona
-            mayor de una residencia de Córdoba, escribís tu carta y nosotros la hacemos llegar.
+            mayor de una residencia, escribís tu carta y nosotros la hacemos llegar.
             Desde ahí, la correspondencia se sostiene en el tiempo.
           </p>
         </div>
@@ -354,27 +360,15 @@ const pasos = [
     <section class="py-20 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
       <div class="contenedor">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-          <div>
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-4">
-              <Users class="w-7 h-7" />
+          {impacto.map((dato) => (
+            <div>
+              <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-4">
+                <dato.icon class="w-7 h-7" />
+              </div>
+              <p class="text-4xl font-black text-slate-900">{dato.valor}</p>
+              <p class="text-sm font-bold text-slate-500 uppercase tracking-wide mt-1 text-balance">{dato.label}</p>
             </div>
-            <p class="text-4xl font-black text-slate-900">+500</p>
-            <p class="text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Voluntarios</p>
-          </div>
-          <div>
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-4">
-              <Heart class="w-7 h-7 fill-current" />
-            </div>
-            <p class="text-4xl font-black text-slate-900">Vínculos</p>
-            <p class="text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Que combaten la soledad</p>
-          </div>
-          <div>
-            <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-4">
-              <Building class="w-7 h-7" />
-            </div>
-            <p class="text-4xl font-black text-slate-900">Comunidad</p>
-            <p class="text-sm font-bold text-slate-500 uppercase tracking-wide mt-1">Residencias e instituciones</p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
