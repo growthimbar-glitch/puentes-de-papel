@@ -1,12 +1,13 @@
 ---
+import { getCollection } from 'astro:content';
 import { Heart, Users, Building, Newspaper, BookOpen, Sparkles, ArrowRight, Send } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
+import NoticiaCard from '../components/NoticiaCard.astro';
 import { FORMS, CIFRAS } from '../consts';
 
 const title = 'Puentes de Papel | Voluntariado intergeneracional en Córdoba';
 const description = 'Voluntariado intergeneracional en Córdoba y en todo el país: Puentes de Papel conecta jóvenes y personas mayores a través de cartas. Conocé cómo sumarte.';
-// BaseLayout la convierte en absoluta.
 const ogImage = '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp';
 
 // Tarjetas de navegación hacia las páginas principales.
@@ -62,6 +63,10 @@ const impacto = [
   { icon: Building, valor: CIFRAS.residencias, label: 'Residencias e instituciones' },
   { icon: Heart, valor: `+${CIFRAS.personasMayores}`, label: 'Personas mayores acompañadas' },
 ];
+
+const ultimasNoticias = (await getCollection('noticias', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 const pasos = [
   {
@@ -377,7 +382,35 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 7. Final Call to Action --- -->
+    <!-- --- 7. Últimas noticias --- -->
+    {ultimasNoticias.length > 0 && (
+      <section class="py-24 bg-white sr-fade-up">
+        <div class="contenedor">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Novedades</span>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+              Últimas noticias
+            </h2>
+            <p class="text-xl text-slate-600 leading-relaxed text-pretty">
+              Encuentros, historias y novedades de nuestra comunidad intergeneracional.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {ultimasNoticias.map((post) => <NoticiaCard post={post} />)}
+          </div>
+
+          <p class="text-center mt-14">
+            <a href="/noticias/" class="inline-flex items-center gap-2 font-bold text-[#A65F4C] hover:text-[#DD8574] hover:gap-3 transition-all">
+              Ver todas las noticias
+              <ArrowRight class="w-5 h-5" />
+            </a>
+          </p>
+        </div>
+      </section>
+    )}
+
+    <!-- --- 8. Final Call to Action --- -->
     <section class="py-24 bg-white">
       <div class="contenedor">
         <div class="bg-[#A65F4C] rounded-[3rem] p-8 md:p-24 text-center relative overflow-hidden">

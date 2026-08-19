@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { ArrowRight, CalendarDays } from 'lucide-astro';
+import { srcsetFor } from '../images';
+
+interface Props {
+  post: CollectionEntry<'noticias'>;
+}
+
+const { post } = Astro.props;
+
+// En UTC: pubDate se parsea a medianoche UTC y en UTC-3 se correría un día atrás.
+const dateFormatter = new Intl.DateTimeFormat('es-AR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+// La tarjeta nunca pasa de ~427px: el contenedor llega a 90rem y a lg entran tres columnas.
+const sizes = '(min-width: 90rem) 427px, (min-width: 64rem) 31vw, (min-width: 48rem) 45vw, calc(100vw - 3rem)';
+---
+
+<a href={`/noticias/${post.id}/`} class="group block sr-fade-up-delayed">
+  <article class="bg-white border border-[#A65F4C]/10 rounded-[2rem] overflow-hidden shadow-sm h-full flex flex-col hover:shadow-md hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
+    {post.data.image && (
+      <div class="aspect-[16/10] overflow-hidden">
+        <img
+          src={post.data.image}
+          srcset={srcsetFor(post.data.image)}
+          sizes={sizes}
+          width={480}
+          height={300}
+          loading="lazy"
+          decoding="async"
+          alt={post.data.imageAlt || post.data.title}
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+    )}
+    <div class="p-6 flex flex-col flex-1">
+      <p class="inline-flex items-center gap-1.5 text-xs font-bold text-[#A65F4C] uppercase tracking-wider mb-3">
+        <CalendarDays class="w-4 h-4" />
+        {dateFormatter.format(post.data.pubDate)}
+      </p>
+      <h3 class="text-xl font-bold text-slate-900 mb-2 leading-snug">{post.data.title}</h3>
+      <p class="text-slate-600 leading-relaxed font-light flex-1">{post.data.description}</p>
+      <span class="mt-5 inline-flex items-center gap-2 font-bold text-[#A65F4C] group-hover:gap-3 transition-all">
+        Leer nota
+        <ArrowRight class="w-5 h-5" />
+      </span>
+    </div>
+  </article>
+</a>

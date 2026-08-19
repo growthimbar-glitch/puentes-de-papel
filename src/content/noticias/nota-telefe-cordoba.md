@@ -1,6 +1,6 @@
 ---
 title: 'Puentes de Papel en Telefe Córdoba: cartas que cambian vidas'
-description: 'Conocé más sobre las experiencias de nuestros participantes en la nota realizada por Telefe Córdoba.'
+description: 'Mirá la nota que Telefe Córdoba le dedicó a Puentes de Papel: voluntarios jóvenes y personas mayores de residencias cuentan cómo es escribirse cartas.'
 pubDate: 2026-05-20
 image: '/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp'
 imageAlt: 'Una voluntaria conversa con un adulto mayor en un parque durante un encuentro de Puentes de Papel'
