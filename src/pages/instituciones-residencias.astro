@@ -1,11 +1,91 @@
 ---
 import { Image } from 'astro:assets';
-import { Building, Send, Coins, Printer, Truck, Megaphone, Gift, PenTool, Users, ArrowRight, Heart } from 'lucide-astro';
+import { Building, Send, Coins, Printer, Truck, Megaphone, Gift, PenTool, Users, ArrowRight, Heart, HandHeart, Check, BookOpen, MailOpen, Clock } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
-import { FORMS, CIFRAS } from '../consts';
+import Faq from '../components/Faq.astro';
+import { FORMS, CIFRAS, CONTACT } from '../consts';
+import { faqPageNode } from '../seo';
 const title = 'Voluntariado en residencias geriátricas | Puentes de Papel';
 const description = 'Residencias geriátricas, hogares, escuelas y empresas: sumá tu institución a Puentes de Papel y generá encuentros intergeneracionales en Córdoba.';
+
+// El reparto de tareas es la primera objeción de una dirección: cuánto trabajo le cae encima.
+const reparto = [
+  {
+    icon: HandHeart,
+    title: 'Lo que ponemos nosotros',
+    items: [
+      'El emparejamiento: buscamos afinidad entre cada residente y su voluntario por intereses, gustos e historia personal.',
+      'La capacitación inicial de los voluntarios, donde se trabaja la escucha, la comunicación intergeneracional y el respeto por la intimidad y la autonomía de la persona mayor.',
+      'Los materiales y la logística: nos ocupamos de que cada carta llegue y de que la respuesta vuelva.',
+      'Visitas para acompañar a los residentes que necesiten apoyo para escribir, junto a profesionales y ex docentes que forman parte del proyecto.',
+      'El seguimiento. Si un voluntario deja de escribir, lo contactamos y gestionamos un nuevo emparejamiento para que el residente no quede sin correspondencia.',
+    ],
+  },
+  {
+    icon: Building,
+    title: 'Lo que pone la residencia',
+    items: [
+      'Los residentes que quieran participar. La participación siempre requiere su consentimiento.',
+      'Recibir y entregar las cartas a cada residente.',
+      'Acompañar a quienes necesiten ayuda para elaborar su respuesta, cuando haga falta.',
+      'Coordinar con nosotros los encuentros y las actividades vinculadas al intercambio.',
+    ],
+  },
+];
+
+// Google exige que el texto visible sea idéntico al del marcado FAQPage.
+const faqs = [
+  {
+    pregunta: '¿Participar tiene algún costo para la residencia?',
+    respuesta:
+      'No. La participación de la residencia en Puentes de Papel es completamente gratuita. La idea es que las personas mayores puedan acceder a una experiencia de intercambio y acompañamiento intergeneracional sin que eso represente un gasto para la institución.',
+  },
+  {
+    pregunta: '¿Cuánto tiempo le demanda al personal de la residencia?',
+    respuesta:
+      'Está pensado para ser sencillo y no representar una carga significativa. Lo que pedimos es que el equipo reciba y entregue las cartas a los residentes y, cuando sea necesario, acompañe a quienes necesiten ayuda para elaborar sus respuestas. Los encuentros y las actividades vinculadas al intercambio se coordinan con la residencia, y nuestro equipo acompaña todo el proceso.',
+  },
+  {
+    pregunta: '¿Puede participar un residente que no puede escribir a mano?',
+    respuesta:
+      'Sí. No poder escribir de manera autónoma no es un impedimento para participar. Si el equipo de la residencia puede acompañarlo, lo ayuda a expresar y plasmar sus respuestas. Además, desde Puentes de Papel nos acercamos a la residencia para acompañar a quienes necesiten apoyo, en espacios que se hacen junto a profesionales y ex docentes del proyecto, con dinámicas y juegos que facilitan la expresión.',
+  },
+  {
+    pregunta: '¿Cómo se cuida la privacidad del residente?',
+    respuesta:
+      'Las cartas son privadas y no se comparten con terceros ajenos al intercambio. En la inscripción pedimos únicamente los datos necesarios para el emparejamiento, como nombre, edad y sexo, y consultamos qué temas le interesa conversar y cuáles prefiere evitar. Si durante el proceso aparece un tema sensible que el residente no desea abordar, se lo comunicamos al voluntario para que no vuelva a tratarse. Participar requiere el consentimiento del residente, y cuando la residencia lo considera pertinente se articula también con la familia.',
+  },
+  {
+    pregunta: '¿Se publican fotos o cartas en redes sociales?',
+    respuesta:
+      'No sin autorización. Ninguna fotografía, carta, fragmento de carta o testimonio de los participantes se publica sin consentimiento previo. Para cada publicación pedimos la autorización del residente, del voluntario, de la residencia y, cuando corresponde, de la familia.',
+  },
+  {
+    pregunta: '¿Qué pasa si un residente quiere dejar de participar?',
+    respuesta:
+      'La participación es voluntaria y puede interrumpirse en cualquier momento, respetando siempre la decisión y el bienestar de la persona mayor.',
+  },
+];
+
+// Beneficios descritos como lo que la actividad pone en juego, no como resultados clínicos: no tenemos estudios que citar.
+const paraResidentes = [
+  {
+    icon: BookOpen,
+    title: 'Memoria y palabra',
+    text: 'Contar la propia historia para que otro la lea es, en la práctica, un ejercicio de reminiscencia: hay que recordar, ordenar y ponerlo en palabras. Y es de las pocas actividades donde el residente es el que sabe y el otro el que pregunta.',
+  },
+  {
+    icon: MailOpen,
+    title: 'Un vínculo propio',
+    text: 'La carta no es una actividad grupal. Lleva su nombre y llega para esa persona, escrita por alguien que la eligió a ella. En una rutina compartida con muchos otros, tener algo propio no es un detalle menor.',
+  },
+  {
+    icon: Clock,
+    title: 'Algo que sostiene entre visitas',
+    text: 'El intercambio sigue vivo aunque esa semana no venga nadie. Entre una carta y la respuesta hay una espera, y esa espera también acompaña: hay algo por venir con fecha incierta pero segura.',
+  },
+];
 ---
 
 <BaseLayout
@@ -13,6 +93,7 @@ const description = 'Residencias geriátricas, hogares, escuelas y empresas: sum
   description={description}
   showAnimations={true}
   ogImage="/images/puentes-de-papel-encuentro-generacional-voluntaria-adulta-mayor.webp"
+  jsonLd={[faqPageNode('/instituciones-residencias/', faqs)]}
 >
   <div class="font-sans text-slate-800 overflow-hidden">
 
@@ -70,6 +151,85 @@ const description = 'Residencias geriátricas, hogares, escuelas y empresas: sum
         </a>
       </div>
     </section>
+
+    <!-- --- Reparto de tareas --- -->
+    <section id="como-trabajamos" class="py-24 md:py-28 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
+      <div class="contenedor">
+        <div class="max-w-3xl mb-16">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">El acuerdo</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] text-pretty mt-2 mb-6">
+            Qué pone la residencia y qué ponemos nosotros
+          </h2>
+          <p class="text-xl text-slate-600 leading-relaxed font-light text-pretty">
+            Participar es <strong class="font-bold text-slate-700">gratuito para la residencia</strong> y está pensado
+            para no recargar a su equipo. El armado de las duplas, la formación de los voluntarios y el
+            ida y vuelta de las cartas corren por nuestra cuenta.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {reparto.map((columna) => (
+            <div class="bg-white border border-[#A65F4C]/10 rounded-[2.5rem] p-8 md:p-10 text-left">
+              <div class="w-14 h-14 rounded-2xl bg-[#FCF9F5] border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
+                <columna.icon class="w-7 h-7" />
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-6">{columna.title}</h3>
+              <ul class="space-y-4">
+                {columna.items.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <Check class="w-5 h-5 shrink-0 text-[#A65F4C] mt-1" />
+                    <span class="text-lg text-slate-600 leading-relaxed font-light text-pretty">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- --- Qué cambia para los residentes --- -->
+    <section id="beneficios-residentes" class="py-24 md:py-28 bg-white sr-fade-up">
+      <div class="contenedor">
+        <!-- La keyword vive en el eyebrow: como H2 quedaba largo y sonaba a relleno. -->
+        <div class="max-w-3xl mb-16">
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Beneficios del voluntariado en residencias geriátricas</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] text-pretty mt-2 mb-6">
+            ¿Qué cambia para los residentes?
+          </h2>
+          <p class="text-xl text-slate-600 leading-relaxed font-light text-pretty">
+            Recibir una carta, contestarla y esperar la próxima pone en juego memoria, lenguaje y vínculo:
+            tres cosas que la rutina de una institución no siempre tiene cómo estimular.
+          </p>
+        </div>
+
+        <ul class="grid md:grid-cols-3 gap-10 lg:gap-14">
+          {paraResidentes.map((item) => (
+            <li class="border-t-2 border-[#A65F4C]/15 pt-8 text-left sr-fade-up-delayed">
+              <item.icon class="w-8 h-8 text-[#A65F4C] mb-5" />
+              <h3 class="text-2xl font-bold text-slate-900 mb-3 text-balance">{item.title}</h3>
+              <p class="text-lg text-slate-600 leading-relaxed font-light text-pretty">{item.text}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-center text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto mt-16">
+          Para la institución, además, el voluntariado en residencias geriátricas es una actividad
+          intergeneracional sostenida en el tiempo y con seguimiento externo: algo concreto para
+          contarle a las familias de los residentes.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- Preguntas frecuentes de instituciones --- -->
+    <Faq
+      title="Lo que nos preguntan las residencias"
+      intro="Costos, tiempos del personal, privacidad y qué pasa con quienes no pueden escribir por sí mismos."
+      faqs={faqs}
+    >
+      ¿Te quedó otra duda? Escribinos a{' '}
+      <a href={CONTACT.emailHref} class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">{CONTACT.email}</a>.
+    </Faq>
 
     <!-- --- Instituciones educativas --- -->
     <section id="instituciones-educativas" class="py-24 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">

@@ -1,0 +1,45 @@
+---
+// Sección de preguntas frecuentes. Vive en dos páginas, así que el marcado va acá para que no se desalineen.
+// El bloque FAQPage de JSON-LD lo arma cada página con faqPageNode(): Google exige que el texto visible sea idéntico.
+import { ChevronDown } from 'lucide-astro';
+
+interface Props {
+  title: string;
+  intro: string;
+  faqs: { pregunta: string; respuesta: string }[];
+}
+
+const { title, intro, faqs } = Astro.props;
+---
+
+<section id="preguntas-frecuentes" class="py-24 bg-[#F2EADD]/50 border-y border-[#A65F4C]/10 sr-fade-up scroll-mt-24">
+  <div class="contenedor">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Preguntas frecuentes</span>
+      <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-slate-600 leading-relaxed text-pretty">
+        {intro}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-start">
+      {faqs.map((faq) => (
+        <details class="group bg-white border border-[#A65F4C]/10 rounded-[2rem] px-8 py-6 hover:border-[#A65F4C]/25 transition-colors">
+          <summary class="cursor-pointer list-none flex items-start justify-between gap-4 [&::-webkit-details-marker]:hidden">
+            <h3 class="text-xl font-bold text-slate-900 text-pretty">{faq.pregunta}</h3>
+            <ChevronDown class="w-6 h-6 shrink-0 text-[#A65F4C] transition-transform duration-300 group-open:rotate-180" />
+          </summary>
+          <p class="text-lg text-slate-600 leading-relaxed font-light mt-4 text-pretty">
+            {faq.respuesta}
+          </p>
+        </details>
+      ))}
+    </div>
+
+    <p class="text-center text-lg text-slate-600 mt-14">
+      <slot />
+    </p>
+  </div>
+</section>

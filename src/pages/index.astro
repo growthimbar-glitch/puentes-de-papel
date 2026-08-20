@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { Heart, Users, Building, Newspaper, BookOpen, Sparkles, ArrowRight, Send } from 'lucide-astro';
+import { Heart, Users, Building, Newspaper, BookOpen, Sparkles, ArrowRight, Send, MailOpen, PenLine } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import NoticiaCard from '../components/NoticiaCard.astro';
@@ -55,6 +55,25 @@ const reparos = [
   {
     title: 'Con acompañamiento',
     text: 'El equipo coordina con la residencia y está para lo que necesites.',
+  },
+];
+
+// Los tres lados del intercambio, en el orden en que importan: quien recibe, quien escribe, el resto.
+const beneficios = [
+  {
+    icon: MailOpen,
+    title: 'Qué gana la persona mayor',
+    text: 'Compañía que no depende de que alguien pueda venir. La soledad no deseada es una de las cosas que más pesa en la vejez, y no se resuelve con una visita suelta: se resuelve sabiendo que alguien va a volver a escribir. A eso se suma algo que no siempre aparece: alguien que pregunta por su historia y espera la respuesta. Después de toda una vida, que alguien quiera escuchar no es poco.',
+  },
+  {
+    icon: PenLine,
+    title: 'Qué gana quien escribe',
+    text: 'Para muchos voluntarios es su primera experiencia de voluntariado social, y es de las formas más accesibles de empezar: no hay que formarse durante meses ni cumplir un horario. Lo que se aprende en el camino cuesta más de conseguir. Escuchar de verdad. Escribir para alguien concreto. Y descubrir que la vejez no se parece casi en nada al estereotipo con el que uno llegó: eso tiene nombre, se llama viejismo, y se desarma conociendo gente.',
+  },
+  {
+    icon: Users,
+    title: 'Qué gana la comunidad',
+    text: 'Cada dupla es un vínculo que no existía y que, sin el programa, no se habría dado nunca: dos personas que no comparten barrio, ni familia, ni edad. Cuando esos vínculos se multiplican, la vejez deja de ser un lugar aparte al que se llega solo. A eso apunta el envejecimiento activo: seguir participando, seguir teniendo a quién contarle las cosas.',
   },
 ];
 
@@ -118,7 +137,7 @@ const pasos = [
 
 
             <h2 class="text-xl md:text-2xl font-semibold text-slate-600 mb-6 leading-relaxed">
-              Un voluntariado que une a jóvenes y personas mayores, carta a carta.
+              Un voluntariado intergeneracional que une a jóvenes y personas mayores, carta a carta.
             </h2>
 
             <p class="text-xl text-slate-500 mb-10 leading-relaxed max-w-xl">
@@ -162,7 +181,7 @@ const pasos = [
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
-                alt="Un adulto mayor y una joven voluntaria conversan animadamente sentados en una banca de parque durante una sesión del proyecto Puentes de Papel"
+                alt="Un adulto mayor y una joven voluntaria conversan animadamente sentados en una banca de parque durante un encuentro de voluntariado intergeneracional del proyecto Puentes de Papel"
                 title="Joven voluntaria conversando con adulto mayor en parque — Puentes de Papel"
                 aria-label="Encuentro intergeneracional al aire libre en el proyecto Puentes de Papel de Munay Ruray, donde jóvenes escuchan y acompañan a personas mayores en el rescate de sus memorias."
                 role="img"
@@ -198,22 +217,40 @@ const pasos = [
         </div>
 
         <div class="border-t border-[#A65F4C]/10 pt-16 md:pt-20">
-          <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div class="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
             <h2 class="lg:col-span-5 text-3xl md:text-4xl font-black text-slate-900 leading-tight text-pretty">
               ¿Qué es el voluntariado intergeneracional?
             </h2>
-            <div class="lg:col-span-6 lg:col-start-7 space-y-5 text-lg md:text-xl text-slate-600 leading-relaxed font-light text-pretty">
-              <p>
-                Es un tipo de voluntariado social en el que personas de distintas edades comparten tiempo,
-                historias y afecto. No hace falta una formación previa ni una disponibilidad rígida:
-                hace falta ganas de escuchar.
-              </p>
-              <p>
-                En Puentes de Papel lo hacemos a través de cartas. Cada voluntario le escribe a una persona
-                mayor de una residencia, y esa correspondencia se sostiene en el tiempo. No hace falta vivir
-                en la misma ciudad: se escribe desde cualquier provincia.
-              </p>
-            </div>
+
+            <p class="lg:col-span-7 lg:col-start-6 text-xl md:text-2xl text-slate-700 leading-relaxed text-pretty border-l-2 border-[#A65F4C]/30 pl-5">
+              El voluntariado intergeneracional es una forma de voluntariado social en la que personas
+              de distintas edades comparten tiempo, historias y afecto de
+              manera sostenida. No hace falta una formación previa ni una disponibilidad rígida:
+              hace falta ganas de escuchar.
+            </p>
+          </div>
+
+          <div class="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed text-pretty mt-12 md:mt-14">
+            <p>
+              Lo que lo distingue de una visita suelta o de una actividad de un día es la continuidad.
+              El vínculo no se agota en un encuentro: se construye de a poco, con el ida y vuelta, hasta
+              que las dos personas empiezan a esperar la próxima carta.
+            </p>
+            <p>
+              En Puentes de Papel lo hacemos a través de cartas escritas a mano. Cada voluntario le
+              escribe a una persona mayor de una residencia, y esa correspondencia se sostiene en el
+              tiempo. No hace falta vivir en la misma ciudad: las residencias están en Córdoba, Santa Fe
+              y Buenos Aires, y se escribe desde cualquier provincia del país.
+            </p>
+            <p>
+              Tampoco hace falta ser estudiante, ni tener una carrera relacionada, ni haber trabajado
+              antes con personas mayores. Para mucha gente es su primer voluntariado, y empieza con
+              algo tan simple como contar cómo fue la semana y preguntar por la del otro.
+            </p>
+            <p>
+              Y funciona en las dos direcciones. Es fácil pensar el voluntariado como algo que uno da;
+              en la práctica, cada carta vuelve con algo adentro.
+            </p>
           </div>
 
           <ul class="grid sm:grid-cols-3 gap-6 mt-14">
@@ -230,7 +267,41 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 3. Por qué cartas --- -->
+    <!-- --- 3. Qué gana cada generación --- -->
+    <section class="py-24 md:py-28 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
+      <div class="contenedor">
+        <!-- Alineado a la izquierda a propósito: viene después de dos bloques centrados. -->
+        <div class="max-w-3xl mb-16 md:mb-20">
+          <!-- La keyword vive en el eyebrow: el H2 de arriba ya la tiene exacta y repetirla acá sonaba a relleno. -->
+          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Beneficios del voluntariado intergeneracional</span>
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] text-pretty mt-2 mb-6">
+            ¿Qué gana cada generación?
+          </h2>
+          <p class="text-xl text-slate-600 leading-relaxed font-light text-pretty">
+            El voluntariado intergeneracional no es un favor que una generación le hace a la otra.
+            Es un intercambio, y cada parte se lleva algo distinto.
+          </p>
+        </div>
+
+        <ul class="grid md:grid-cols-3 gap-10 lg:gap-14">
+          {beneficios.map((beneficio) => (
+            <li class="border-t-2 border-[#A65F4C]/15 pt-8 sr-fade-up-delayed">
+              <beneficio.icon class="w-8 h-8 text-[#A65F4C] mb-5" />
+              <h3 class="text-2xl font-bold text-slate-900 mb-3 text-balance">{beneficio.title}</h3>
+              <p class="text-lg text-slate-600 leading-relaxed font-light text-pretty">{beneficio.text}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-center text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto mt-16">
+          Nada de esto pasa en una tarde. El voluntariado intergeneracional funciona cuando el vínculo
+          se sostiene: por eso lo que pedimos no es tiempo, es continuidad. Si te interesa, mirá{' '}
+          <a href="/voluntariado-adultos-mayores/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">cómo sumarte al voluntariado</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- --- 4. Por qué cartas --- -->
     <section class="py-24 md:py-28 bg-[#F2EADD] relative overflow-hidden sr-fade-up">
       <div class="absolute -left-32 top-1/4 w-96 h-96 bg-[#DD8574] rounded-full mix-blend-multiply filter blur-[128px] opacity-25 pointer-events-none"></div>
 
@@ -290,7 +361,7 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 4. Cómo funciona --- -->
+    <!-- --- 5. Cómo funciona --- -->
     <section class="py-24 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
       <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
@@ -331,7 +402,7 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 5. Resumen / Explorá el proyecto --- -->
+    <!-- --- 6. Resumen / Explorá el proyecto --- -->
     <section class="py-24 bg-white relative sr-fade-up">
       <div class="contenedor">
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -365,7 +436,7 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 6. Franja de impacto --- -->
+    <!-- --- 7. Franja de impacto --- -->
     <section class="py-20 bg-[#FCF9F5] border-y border-orange-100/50 sr-fade-up">
       <div class="contenedor">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
@@ -382,7 +453,7 @@ const pasos = [
       </div>
     </section>
 
-    <!-- --- 7. Últimas noticias --- -->
+    <!-- --- 8. Últimas noticias --- -->
     {ultimasNoticias.length > 0 && (
       <section class="py-24 bg-white sr-fade-up">
         <div class="contenedor">
@@ -410,7 +481,7 @@ const pasos = [
       </section>
     )}
 
-    <!-- --- 8. Final Call to Action --- -->
+    <!-- --- 9. Final Call to Action --- -->
     <section class="py-24 bg-white">
       <div class="contenedor">
         <div class="bg-[#A65F4C] rounded-[3rem] p-8 md:p-24 text-center relative overflow-hidden">
