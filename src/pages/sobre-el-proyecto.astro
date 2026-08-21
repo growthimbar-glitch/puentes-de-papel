@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Mail, Clock, PenTool, ChevronDown, Building, Newspaper } from 'lucide-astro';
+import { Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, Send, Mail, Clock, PenTool, ChevronDown, Building, Newspaper } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import { CIFRAS, MEDIOS } from '../consts';
@@ -342,10 +342,11 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
       <div class="contenedor relative z-10">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">
-            ¿Cómo funcionan las cartas para adultos mayores?
+            El trabajo que hay detrás de cada carta
           </h2>
           <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed text-pretty mb-6">
-            El emparejamiento no es al azar y nadie escribe la primera carta sin preparación.
+            Detrás de cada dupla hay un trabajo que no se ve en la carta: armarla con criterio,
+            preparar a quien escribe y sostener el intercambio a lo largo del tiempo.
           </p>
           <div class="w-24 h-1.5 bg-amber-400 rounded-full mx-auto"></div>
         </div>
@@ -363,13 +364,13 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
             <div class="group flex md:flex-col items-start md:items-center relative z-10 flex-1 sr-fade-up-delayed">
               <div class="relative flex-shrink-0 mr-6 md:mr-0">
                 <div class="w-20 h-20 rounded-full bg-rose-100 border-4 border-white shadow-md flex items-center justify-center text-rose-500 transition-transform duration-300 group-hover:scale-105">
-                  <UserPlus class="w-9 h-9" />
+                  <Users class="w-9 h-9" />
                 </div>
                 <span class="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-rose-500 text-white text-sm font-black flex items-center justify-center border-2 border-white shadow-sm">1</span>
               </div>
               <div class="md:text-center md:mt-6">
-                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-rose-500 transition-colors">Paso 1</h3>
-                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Adultos mayores y voluntarios se inscriben al programa.</p>
+                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-rose-500 transition-colors">El emparejamiento</h3>
+                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Ninguna dupla se arma al azar. Cruzamos intereses, oficios, gustos e historia para que las dos personas tengan de qué hablar desde la primera carta.</p>
               </div>
             </div>
 
@@ -377,13 +378,13 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
             <div class="group flex md:flex-col items-start md:items-center relative z-10 flex-1 sr-fade-up-delayed">
               <div class="relative flex-shrink-0 mr-6 md:mr-0">
                 <div class="w-20 h-20 rounded-full bg-amber-100 border-4 border-white shadow-md flex items-center justify-center text-amber-500 transition-transform duration-300 group-hover:scale-105">
-                  <Heart class="w-9 h-9" />
+                  <BookOpen class="w-9 h-9" />
                 </div>
                 <span class="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-amber-500 text-white text-sm font-black flex items-center justify-center border-2 border-white shadow-sm">2</span>
               </div>
               <div class="md:text-center md:mt-6">
-                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-amber-500 transition-colors">Paso 2</h3>
-                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Se realiza un proceso de emparejamiento según intereses y afinidades.</p>
+                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-amber-500 transition-colors">La preparación</h3>
+                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Nadie escribe la primera carta sin preparación. En un encuentro inicial se trabajan el viejismo, la escucha y el cuidado de la intimidad de la otra persona.</p>
               </div>
             </div>
 
@@ -391,13 +392,13 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
             <div class="group flex md:flex-col items-start md:items-center relative z-10 flex-1 sr-fade-up-delayed">
               <div class="relative flex-shrink-0 mr-6 md:mr-0">
                 <div class="w-20 h-20 rounded-full bg-[#F2EADD] border-4 border-white shadow-md flex items-center justify-center text-[#A65F4C] transition-transform duration-300 group-hover:scale-105">
-                  <BookOpen class="w-9 h-9" />
+                  <Send class="w-9 h-9" />
                 </div>
                 <span class="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#A65F4C] text-white text-sm font-black flex items-center justify-center border-2 border-white shadow-sm">3</span>
               </div>
               <div class="md:text-center md:mt-6">
-                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-[#A65F4C] transition-colors">Paso 3</h3>
-                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Los voluntarios reciben una capacitación inicial sobre escucha y acompañamiento.</p>
+                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-[#A65F4C] transition-colors">El viaje de la carta</h3>
+                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Se escribe a mano y del resto del camino nos ocupamos nosotros: los materiales, el envío y la vuelta de la respuesta. Por eso se puede escribir desde cualquier provincia.</p>
               </div>
             </div>
 
@@ -405,13 +406,13 @@ const description = 'Conocé la historia, la misión y el equipo de Puentes de P
             <div class="group flex md:flex-col items-start md:items-center relative z-10 flex-1 sr-fade-up-delayed">
               <div class="relative flex-shrink-0 mr-6 md:mr-0">
                 <div class="w-20 h-20 rounded-full bg-emerald-100 border-4 border-white shadow-md flex items-center justify-center text-emerald-500 transition-transform duration-300 group-hover:scale-105">
-                  <Mail class="w-9 h-9" />
+                  <Heart class="w-9 h-9" />
                 </div>
                 <span class="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-emerald-500 text-white text-sm font-black flex items-center justify-center border-2 border-white shadow-sm">4</span>
               </div>
               <div class="md:text-center md:mt-6">
-                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-emerald-500 transition-colors">Paso 4</h3>
-                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">Inicia el intercambio de cartas, conectando generaciones mediante la escritura.</p>
+                <h3 class="text-2xl font-bold text-slate-900 mb-2 group-hover:text-emerald-500 transition-colors">El seguimiento</h3>
+                <p class="text-slate-600 font-light text-lg leading-relaxed md:px-2">El intercambio no queda librado a sí mismo. Si un voluntario no puede seguir, hacemos un cierre cuidado y armamos una dupla nueva para que la persona mayor no quede esperando.</p>
               </div>
             </div>
           </div>

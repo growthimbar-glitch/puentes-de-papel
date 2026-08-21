@@ -23,10 +23,4 @@ creen en el poder de los vínculos humanos.
 En este espacio vas a poder seguir de cerca cómo se construyen esos puentes, mes
 a mes, entre generaciones.
 
-## ¿Querés ser parte?
-
-Si te interesa sumarte, conocé las [formas de participar](/voluntariado-adultos-mayores/)
-o descubrí más [sobre el proyecto](/sobre-el-proyecto/). Y si representás una
-institución, escribinos desde la sección de [instituciones](/instituciones-residencias/).
-
 ¡Gracias por acompañarnos en este camino!

@@ -28,11 +28,3 @@ significó para ellos sumarse y cómo cambió su día a día.
 
 También podés
 [ver la nota completa en el canal de Telefe Córdoba](https://www.youtube.com/watch?v=XZXaozydYZs).
-
-## ¿Querés ser parte?
-
-Si después de ver la nota te dan ganas de sumarte, conocé las
-[formas de participar](/voluntariado-adultos-mayores/) o descubrí más
-[sobre el proyecto](/sobre-el-proyecto/). Y si representás una residencia o una
-institución educativa, escribinos desde la sección de
-[instituciones](/instituciones-residencias/).
