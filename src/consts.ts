@@ -65,7 +65,7 @@ export const SOCIALS = [
 export const CIFRAS = {
   inicio: 'abril de 2026',
   inicioISO: '2026-04',
-  residencias: 9,
+  residencias: 10,
   residenciasAlInicio: 2,
   // El dato exacto es 83; se publica redondeado para que no envejezca a cada alta.
   personasMayores: 80,
@@ -75,7 +75,7 @@ export const CIFRAS = {
   porProvincia: [
     { provincia: 'Córdoba', cantidad: 4 },
     { provincia: 'Santa Fe', cantidad: 3 },
-    { provincia: 'Buenos Aires', cantidad: 2 },
+    { provincia: 'Buenos Aires', cantidad: 3 },
   ],
 } as const;
 
