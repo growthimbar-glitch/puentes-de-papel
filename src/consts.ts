@@ -46,7 +46,14 @@ export const FORMS = {
     'https://docs.google.com/forms/d/e/1FAIpQLSezOOuEhchF9VfSwY-XW5qhxI66qFAPbIrtb4tbl16yyZl11g/viewform',
   residencias:
     'https://docs.google.com/forms/d/e/1FAIpQLSfsgUEHVjzWmmuFFbbEfn_klaTzJIUB2Bag4J0LrVA8ofJrgw/viewform',
+  embajadores:
+    'https://docs.google.com/forms/d/e/1FAIpQLSf2WN6vZAdmNSJ9kGSKCRZV1CZiLSIIxsBIZgezh4H0WSUnSg/viewform',
+  acompanantes:
+    'https://docs.google.com/forms/d/e/1FAIpQLSdTtrCTwbvh2vQcN9FTelUTT2hBkbNtf7CI12BLrfg2gG1Ktg/viewform',
 } as const;
+
+// Provisorio hasta que marketing defina el link de donaciones.
+export const DONAR_HREF = '/voluntariado-adultos-mayores/#colaborar';
 
 // Datos de contacto.
 export const CONTACT = {
@@ -65,7 +72,7 @@ export const SOCIALS = [
 export const CIFRAS = {
   inicio: 'abril de 2026',
   inicioISO: '2026-04',
-  residencias: 10,
+  residencias: 11,
   residenciasAlInicio: 2,
   // El dato exacto es 83; se publica redondeado para que no envejezca a cada alta.
   personasMayores: 80,
@@ -75,11 +82,19 @@ export const CIFRAS = {
   porProvincia: [
     { provincia: 'Córdoba', cantidad: 4 },
     { provincia: 'Santa Fe', cantidad: 3 },
-    { provincia: 'Buenos Aires', cantidad: 3 },
+    { provincia: 'Buenos Aires', cantidad: 4 },
   ],
 } as const;
 
 export const MEDIOS = [
+  {
+    medio: 'Radio La Ranchada',
+    formato: 'Entrevista en radio',
+    fecha: '7 de octubre de 2026',
+    resumen: 'Entrevista sobre el trabajo del proyecto y la importancia de generar vínculos entre generaciones.',
+    url: '/noticias/entrevista-radio-la-ranchada/',
+    urlLabel: 'Leer la noticia',
+  },
   {
     medio: 'Telefe Córdoba',
     formato: 'Nota en televisión',

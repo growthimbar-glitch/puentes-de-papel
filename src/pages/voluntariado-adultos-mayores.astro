@@ -1,28 +1,146 @@
 ---
-import { Heart, Users, Building, Send, ArrowRight, CreditCard, HandHeart, Sparkles } from 'lucide-astro';
+import { Heart, Users, Send, ArrowRight, ArrowDown, ArrowUp, CreditCard, MapPin, Megaphone, Handshake } from 'lucide-astro';
 import BaseLayout from '../components/BaseLayout.astro';
+import Card from '../components/Card.astro';
 import Faq from '../components/Faq.astro';
-import { FORMS, BANK, CIFRAS, CONTACT } from '../consts';
+import { FORMS, BANK, CONTACT } from '../consts';
 import { faqPageNode } from '../seo';
-const title = 'Voluntariado con adultos mayores Córdoba | Puentes de Papel';
-const description = 'Voluntariado con adultos mayores en Córdoba y en toda Argentina: acompañá a una persona mayor por carta, vivas donde vivas. Conocé cómo participar.';
+const title = 'Voluntariado con adultos mayores en Argentina | Puentes de Papel';
+const description = 'Voluntariado con adultos mayores en Argentina: escribí cartas, colaborá desde tu localidad o difundí el proyecto. En Córdoba, Santa Fe y Buenos Aires.';
 
-// Qué hace el voluntario en la práctica. El "qué es" conceptual vive en el home; acá va lo concreto.
-const enQueConsiste = [
+// Cada rol es una card de la grilla y una sección con ancla; la card y la sección salen del mismo objeto.
+const roles = [
   {
-    icon: Users,
-    title: 'Escuchás más de lo que contás',
-    text: 'La carta no es un informe de tu vida. Buena parte del intercambio es preguntar: por su infancia, por su oficio, por lo que hacía los domingos. Del otro lado hay alguien con muchas más historias acumuladas que vos, y con pocas ocasiones de contarlas.',
-  },
-  {
-    icon: Send,
-    title: 'Escribís desde donde estés',
-    text: 'No hace falta vivir cerca de la residencia ni coincidir con nadie en un horario. Vos escribís cuando podés; la logística corre por nuestra cuenta, en los dos sentidos.',
-  },
-  {
+    id: 'residente',
     icon: Heart,
-    title: 'Sostenés el vínculo',
-    text: 'Lo único que pedimos en serio es continuidad. Alguien esperando una carta que no llega está peor que si nunca hubiera empezado, y por eso el equipo acompaña el intercambio de punta a punta.',
+    nombre: 'Residente',
+    resumen: 'Sos una persona mayor que vive en una residencia o institución y querés recibir cartas y compartir tus historias.',
+    eyebrow: 'Para personas mayores',
+    titulo: 'Participar como residente: un vínculo por carta para personas mayores',
+    parrafos: [
+      'El residente es la persona mayor que participa del intercambio de cartas. Se incorpora al proyecto a través de la residencia o institución donde vive, y el equipo lo vincula con un joven voluntario o una joven voluntaria con quien tenga afinidad.',
+      'A partir de ahí recibe cartas, las responde y sostiene una conversación que lo acompaña en el tiempo. Es un espacio para compartir historias, memorias y saberes, y para sentirse escuchado y valorado.',
+    ],
+    listaTitulo: 'Cómo se participa',
+    lista: [
+      { text: 'La participación es voluntaria y siempre requiere el consentimiento de la persona mayor.' },
+      { text: 'Si necesita ayuda para escribir, la acompañamos con visitas junto a profesionales y ex docentes que forman parte del proyecto.' },
+      { text: 'La residencia recibe y entrega las cartas; del resto de la logística nos ocupamos nosotros.' },
+    ],
+    cta: {
+      titulo: '¿Querés participar o conocés a alguien?',
+      texto: 'Completá el formulario de inscripción y el equipo se pone en contacto.',
+      href: FORMS.adultosMayores,
+      label: 'Inscribirme como adulto mayor',
+      externo: true,
+    },
+    secundario: { texto: '¿Trabajás en una residencia?', href: '/instituciones-residencias/', label: 'Sumá a tus residentes' },
+  },
+  {
+    id: 'joven-voluntario',
+    icon: Users,
+    nombre: 'Joven voluntario/a',
+    resumen: 'Le escribís cartas a una persona mayor y sostenés el intercambio en el tiempo, después de una capacitación.',
+    eyebrow: 'El voluntariado principal',
+    titulo: 'Joven voluntario/a: acompañá a una persona mayor por carta',
+    parrafos: [
+      'Es quien escribe y envía cartas a un residente. Antes de empezar hace una capacitación y después acompaña el intercambio respetando las pautas del proyecto. Es el rol de voluntariado principal de Puentes de Papel.',
+      'Se trata de sostener una correspondencia con una persona mayor que vive en una residencia: le escribís, te responde, y ese ida y vuelta se mantiene en el tiempo. No es una visita ni un turno que hay que cumplir: es un vínculo que se construye por carta.',
+    ],
+    listaTitulo: 'Qué hacés como voluntario',
+    lista: [
+      {
+        title: 'Escuchás más de lo que contás',
+        text: 'La carta no es un informe de tu vida. Buena parte del intercambio es preguntar: por su infancia, por su oficio, por lo que hacía los domingos. Del otro lado hay alguien con muchas más historias acumuladas que vos, y con pocas ocasiones de contarlas.',
+      },
+      {
+        title: 'Escribís desde donde estés',
+        text: 'No hace falta vivir cerca de la residencia ni coincidir con nadie en un horario. Vos escribís cuando podés; la logística corre por nuestra cuenta, en los dos sentidos.',
+      },
+      {
+        title: 'Sostenés el vínculo',
+        text: 'Lo único que pedimos en serio es continuidad. Alguien esperando una carta que no llega está peor que si nunca hubiera empezado, y por eso el equipo acompaña el intercambio de punta a punta.',
+      },
+    ],
+    cta: {
+      titulo: 'Inscribite como voluntario/a',
+      texto: 'Completá el formulario y te contactamos para la capacitación inicial, que dura entre una hora y una hora y media y puede hacerse de forma virtual.',
+      href: FORMS.voluntarios,
+      label: 'Inscribirme como voluntario/a',
+      externo: true,
+    },
+  },
+  {
+    id: 'voluntario-acompanante',
+    icon: MapPin,
+    nombre: 'Voluntario/a acompañante',
+    resumen: 'Colaborás desde tu localidad, en Córdoba, Santa Fe, Buenos Aires u otras, con la recepción, impresión y entrega de cartas.',
+    nuevo: true,
+    eyebrow: 'En tu localidad',
+    titulo: 'Voluntario/a acompañante: el proyecto cerca de cada residencia',
+    parrafos: [
+      'Acompaña y colabora con Puentes de Papel desde su lugar, sobre todo en provincias o localidades donde el equipo no tiene presencia directa. Es quien hace que las cartas lleguen y que el intercambio funcione cerca de cada residencia.',
+      'Convocamos acompañantes en Córdoba y también fuera de Córdoba: en Santa Fe, en Buenos Aires y en otras localidades a las que el proyecto empieza a llegar.',
+    ],
+    listaTitulo: 'En qué puede ayudar',
+    lista: [
+      { title: 'Recepción', text: 'Recibir las cartas que llegan para las personas mayores de su zona.' },
+      { title: 'Impresión', text: 'Imprimir cartas y materiales cuando hace falta.' },
+      { title: 'Entrega y gestión', text: 'Llevar las cartas a la residencia, retirar las respuestas y ayudar a que ninguna quede en el camino.' },
+      { title: 'Acompañamiento', text: 'Estar cerca del intercambio junto al equipo.' },
+    ],
+    cta: {
+      titulo: '¿Querés ser acompañante?',
+      texto: 'Completá el formulario contando desde qué localidad querés sumarte y en qué podés ayudar.',
+      href: FORMS.acompanantes,
+      label: 'Quiero ser acompañante',
+      externo: true,
+    },
+  },
+  {
+    id: 'embajador',
+    icon: Megaphone,
+    nombre: 'Embajador/a',
+    resumen: 'Difundís y representás el proyecto, y lo acercás a nuevas personas, instituciones, medios y posibles aliados.',
+    eyebrow: 'Difusión',
+    titulo: 'Embajador/a: acercá Puentes de Papel a más gente',
+    parrafos: [
+      'Ayuda a difundir y representar el proyecto, acercando Puentes de Papel a nuevas personas, instituciones, medios o posibles aliados. Colabora con la expansión y la difusión, para que más jóvenes y más personas mayores sepan que existe.',
+    ],
+    listaTitulo: 'A quiénes puede acercar el proyecto',
+    lista: [
+      { title: 'Personas', text: 'Jóvenes que podrían escribir y familias de personas mayores.' },
+      { title: 'Instituciones', text: 'Residencias, escuelas, universidades u organizaciones de su zona.' },
+      { title: 'Medios', text: 'Periodistas y espacios que quieran contar la historia.' },
+      { title: 'Aliados', text: 'Empresas y organizaciones que podrían sumarse.' },
+    ],
+    cta: {
+      titulo: '¿Querés ser embajador/a?',
+      texto: 'Completá el formulario y te contamos cómo difundir el proyecto en tu entorno.',
+      href: FORMS.embajadores,
+      label: 'Quiero ser embajador/a',
+      externo: true,
+    },
+    secundario: { texto: '¿Preferís hacer un aporte?', href: '#colaborar', label: 'Colaborá económicamente' },
+  },
+  {
+    id: 'alianzas',
+    icon: Handshake,
+    nombre: 'Alianzas estratégicas',
+    resumen: 'Para empresas, organizaciones, instituciones y universidades que quieran aportar recursos, servicios, voluntariado o difusión.',
+    eyebrow: 'Empresas e instituciones',
+    titulo: 'Alianzas estratégicas: construyamos puentes juntos',
+    parrafos: [
+      'Empresas, organizaciones, instituciones, universidades y otros actores pueden vincularse con Puentes de Papel: colaborar con recursos, servicios, voluntariado o difusión, o generar acciones conjuntas.',
+      'Cada alianza se arma a la medida de lo que puede aportar cada organización, y en la página de instituciones está el detalle de cada forma de colaborar.',
+    ],
+    cta: {
+      titulo: '¿Representás una organización?',
+      texto: 'Mirá las formas de colaborar desde el ámbito institucional.',
+      href: '/instituciones-residencias/#empresas',
+      label: 'Ver opciones para instituciones',
+      externo: false,
+    },
   },
 ];
 
@@ -46,7 +164,7 @@ const faqs = [
   {
     pregunta: '¿Puedo participar si vivo fuera de Córdoba?',
     respuesta:
-      'Sí. Puentes de Papel empezó en Córdoba y hoy trabaja con residencias de Córdoba, Santa Fe y Buenos Aires. Como el vínculo se sostiene por carta, no hace falta que el voluntario y la persona mayor vivan en la misma localidad.',
+      'Sí. Puentes de Papel empezó en Córdoba y hoy trabaja con residencias de Córdoba, Santa Fe y Buenos Aires. Como el vínculo se sostiene por carta, no hace falta que el voluntario y la persona mayor vivan en la misma localidad. Y si querés colaborar cerca de una residencia de tu zona, podés sumarte como voluntario o voluntaria acompañante.',
   },
   {
     pregunta: '¿Puedo elegir a la persona mayor a la que le escribo?',
@@ -83,125 +201,142 @@ const faqs = [
     <!-- Encabezado de página -->
     <section class="bg-[#F2EADD] py-16 md:py-20">
       <div class="contenedor text-center">
-        <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Sumate</span>
-        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
-          Voluntariado con adultos mayores en Córdoba
+        <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Formas de participar</span>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4 text-balance">
+          Voluntariado con adultos mayores
         </h1>
-        <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Un voluntariado donde escribís, escuchás y acompañás a una persona mayor,
-          vivas donde vivas. Hay varias formas de sumarse; elegí la que mejor se adapte a vos.
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed text-pretty">
+          Puentes de Papel es un voluntariado con adultos mayores que se sostiene por carta y que
+          convoca en Córdoba, Santa Fe, Buenos Aires y otras localidades del país. Hay varias formas 
+          de sumarse; elegí la que mejor se adapte a vos.
         </p>
       </div>
     </section>
 
-    <!-- --- Inscripción: voluntario / adulto mayor --- -->
-    <section id="inscripcion" class="py-24 bg-white sr-fade-up">
+    <!-- --- Grilla de roles --- -->
+    <section id="formas" class="py-16 md:py-20 bg-white scroll-mt-24">
       <div class="contenedor">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Sé parte del programa de voluntariado social</h2>
-          <p class="text-xl text-slate-600 leading-relaxed">
-            Si querés acompañar a una persona mayor, o conocés a alguien que quiera compartir
-            sus historias, completá el formulario de inscripción.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <!-- Voluntario/a -->
-          <div class="bg-[#FCF9F5] rounded-[2.5rem] border border-[#A65F4C]/10 p-8 md:p-10 flex flex-col text-left hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
-              <Users class="w-7 h-7" />
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero ser voluntario/a</h3>
-            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
-              Sumate para acompañar, escribir y escuchar. Vas a recibir una capacitación inicial y a formar parte de una comunidad que combate la soledad.
-            </p>
-            <a
-              href={FORMS.voluntarios}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-6 inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white hover:bg-[#DD8574] text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer btn-shine"
-            >
-              Inscribirme como voluntario/a
-              <Send class="w-5 h-5" />
-            </a>
-          </div>
-
-          <!-- Adulto mayor -->
-          <div class="bg-[#FCF9F5] rounded-[2.5rem] border border-[#A65F4C]/10 p-8 md:p-10 flex flex-col text-left hover:border-[#DD8574]/30 hover:-translate-y-1 transition-all duration-300">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
-              <Heart class="w-7 h-7 fill-current" />
-            </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero participar como adulto mayor</h3>
-            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
-              Compartí tus historias, memorias y saberes. Vas a encontrar un espacio para sentirte escuchado, acompañado y valorado.
-            </p>
-            <a
-              href={FORMS.adultosMayores}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
-            >
-              Inscribirme como adulto mayor
-              <Send class="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-
-        <p class="text-center text-lg text-slate-600 mt-12">
-          ¿Todavía no conocés el proyecto?{' '}
-          <a href="/sobre-el-proyecto/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé cómo funciona</a>{' '}
-          o mirá las{' '}
-          <a href="/noticias/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">últimas noticias</a> de la comunidad.
-        </p>
-      </div>
-    </section>
-
-    <!-- --- En qué consiste --- -->
-    <section id="en-que-consiste" class="py-24 bg-[#F2EADD]/40 border-y border-[#A65F4C]/10 sr-fade-up">
-      <div class="contenedor">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="text-sm font-bold text-[#A65F4C] tracking-widest uppercase">Qué hacés como voluntario</span>
-          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-6">
-            ¿En qué consiste el voluntariado con adultos mayores?
-          </h2>
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 text-balance">Sé parte del programa de voluntariado social</h2>
           <p class="text-xl text-slate-600 leading-relaxed text-pretty">
-            Se trata de sostener una correspondencia con una persona mayor que vive en una
-            residencia: le escribís, te responde, y ese ida y vuelta se mantiene en el tiempo.
-            No es una visita ni un turno que hay que cumplir: es un vínculo que se construye
-            por carta.
+            Cada forma de participar tiene su propio compromiso. Tocá la que te interese para ver qué implica y cómo sumarte.
           </p>
         </div>
 
-        <ul class="grid md:grid-cols-3 gap-10 lg:gap-14">
-          {enQueConsiste.map((item) => (
-            <li class="border-t-2 border-[#A65F4C]/15 pt-8 text-left sr-fade-up-delayed">
-              <item.icon class="w-8 h-8 text-[#A65F4C] mb-5" />
-              <h3 class="text-2xl font-bold text-slate-900 mb-3 text-balance">{item.title}</h3>
-              <p class="text-lg text-slate-600 leading-relaxed font-light text-pretty">{item.text}</p>
+        <ul class="flex flex-wrap justify-center gap-6">
+          {roles.map((rol) => (
+            <li class="w-full sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]">
+              <a href={`#${rol.id}`} class="group block h-full">
+                <Card variant="modern" class="bg-[#FCF9F5] h-full flex flex-col text-left p-7 md:p-8 hover:border-[#DD8574]/30">
+                  <div class="flex items-center justify-between mb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] group-hover:scale-105 transition-transform duration-300">
+                      <rol.icon class="w-7 h-7" />
+                    </div>
+                    {rol.nuevo && (
+                      <span class="text-xs font-bold uppercase tracking-wider text-[#A65F4C] bg-[#A65F4C]/10 border border-[#A65F4C]/15 px-3 py-1 rounded-full">Nuevo</span>
+                    )}
+                  </div>
+                  <p class="text-2xl font-bold text-slate-900 mb-3">{rol.nombre}</p>
+                  <p class="text-slate-600 text-lg leading-relaxed font-light flex-1 text-pretty">{rol.resumen}</p>
+                  <span class="mt-6 inline-flex items-center gap-2 font-bold text-[#A65F4C] group-hover:gap-3 transition-all">
+                    Conocé más
+                    <ArrowDown class="w-5 h-5" />
+                  </span>
+                </Card>
+              </a>
             </li>
           ))}
         </ul>
+
+        <p class="text-center text-lg text-slate-600 mt-12 text-pretty">
+          ¿Preferís ayudar con un aporte económico?{' '}
+          <a href="#colaborar" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Colaborá económicamente</a>.
+          ¿Todavía no conocés el proyecto?{' '}
+          <a href="/sobre-el-proyecto/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé cómo funciona</a>.
+        </p>
       </div>
     </section>
 
-    <!-- --- Colaborar --- -->
-    <section id="colaborar" class="py-24 md:py-28 bg-[#FCF9F5] border-y border-[#A65F4C]/5 relative overflow-hidden sr-fade-up">
-      <!-- Floating decorative shape in background -->
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#A65F4C]/5 rounded-full filter blur-2xl pointer-events-none"></div>
-      <div class="absolute -left-20 -top-20 w-80 h-80 bg-amber-100/30 rounded-full filter blur-2xl pointer-events-none"></div>
+    <!-- --- Un bloque por rol --- -->
+    {roles.map((rol, i) => (
+      <section
+        id={rol.id}
+        class:list={[
+          'py-20 md:py-24 scroll-mt-24 sr-fade-up',
+          i % 2 === 0 ? 'bg-[#FCF9F5] border-y border-[#A65F4C]/5' : 'bg-white',
+        ]}
+      >
+        <!-- Intercalado sólo en desktop: en mobile el texto va siempre antes que el CTA. -->
+        <div
+          class:list={[
+            'contenedor grid gap-10 lg:gap-16 items-start',
+            i % 2 === 0 ? 'lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]' : 'lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]',
+          ]}
+        >
+          <div class:list={['text-left', i % 2 !== 0 && 'lg:order-2']}>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-[#A65F4C] tracking-widest uppercase">
+              <rol.icon class="w-5 h-5" />
+              {rol.eyebrow}
+            </span>
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-3 mb-6 text-balance">{rol.titulo}</h2>
+            <div class="space-y-4 text-lg md:text-xl text-slate-600 leading-relaxed font-light text-pretty">
+              {rol.parrafos.map((parrafo) => <p>{parrafo}</p>)}
+            </div>
 
-      <div class="contenedor relative z-10">
-        <!-- Encabezado -->
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="inline-flex items-center gap-1.5 bg-[#A65F4C]/10 border border-[#A65F4C]/15 text-[#A65F4C] text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider mb-6">
-            Colaborá
+            {rol.lista && (
+              <>
+                <h3 class="text-xl font-bold text-slate-900 mt-10 mb-5">{rol.listaTitulo}</h3>
+                <ul class="space-y-4">
+                  {rol.lista.map((item) => (
+                    <li class="border-l-2 border-[#A65F4C]/20 pl-5 text-lg text-slate-600 leading-relaxed font-light text-pretty">
+                      {item.title && <strong class="block font-bold text-slate-900 mb-1">{item.title}</strong>}
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+
+          <div class="bg-white rounded-[2rem] border border-[#A65F4C]/15 shadow-sm p-8 text-left lg:sticky lg:top-28">
+            <p class="text-xl font-bold text-slate-900 mb-3">{rol.cta.titulo}</p>
+            <p class="text-slate-600 text-lg leading-relaxed font-light text-pretty">{rol.cta.texto}</p>
+            <a
+              href={rol.cta.href}
+              target={rol.cta.externo ? '_blank' : undefined}
+              rel={rol.cta.externo ? 'noopener noreferrer' : undefined}
+              class="mt-6 w-full inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white hover:bg-[#DD8574] text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 btn-shine"
+            >
+              {rol.cta.label}
+              {rol.cta.externo ? <Send class="w-5 h-5" /> : <ArrowRight class="w-5 h-5" />}
+            </a>
+            {rol.secundario && (
+              <p class="mt-5 text-slate-600">
+                {rol.secundario.texto}{' '}
+                <a href={rol.secundario.href} class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">{rol.secundario.label}</a>
+              </p>
+            )}
+            <a href="#formas" class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-[#A65F4C] transition-colors">
+              <ArrowUp class="w-4 h-4" />
+              Ver las otras formas de participar
+            </a>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- --- Colaborar económicamente: no es un rol, por eso va en otra banda --- -->
+    <section id="colaborar" class="py-20 md:py-24 bg-[#A65F4C] scroll-mt-24 sr-fade-up">
+      <div class="contenedor grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-left">
+          <span class="inline-flex items-center gap-1.5 bg-white/15 border border-white/25 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider">
+            Otra forma de ayudar
           </span>
-          <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-[1.15] mb-6">
-            Sostené el acompañamiento a adultos mayores
-          </h2>
-          <div class="space-y-4 text-xl text-slate-600 leading-relaxed font-light text-pretty">
+          <h2 class="text-3xl md:text-4xl font-black text-white mt-5 mb-6">Colaborar económicamente</h2>
+          <div class="space-y-4 text-lg md:text-xl text-white leading-relaxed font-light text-pretty">
             <p>
-              Las donaciones sostienen los gastos concretos del programa: materiales, impresiones, traslados, actividades y nuevas oportunidades para seguir construyendo vínculos entre generaciones.
+              Si no podés sumarte a una tarea, también podés sostener el proyecto con un aporte. Las
+              donaciones cubren los gastos concretos del programa: materiales, impresiones, traslados y actividades.
             </p>
             <p>
               Detrás de cada carta, cada actividad y cada proyecto hay personas que dedican tiempo, trabajo y compromiso para que este voluntariado social siga creciendo.
@@ -209,107 +344,55 @@ const faqs = [
           </div>
         </div>
 
-        <!-- Tres formas de colaborar -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <!-- Opción 1: Quiero colaborar -->
-          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
-            <div class="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center text-[#A65F4C] mb-5">
-              <HandHeart class="w-7 h-7" />
+        <div id="datos-transferencia" class="p-8 bg-white rounded-3xl text-left w-full max-w-xl lg:justify-self-end shadow-md scroll-mt-24">
+          <p class="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
+            <CreditCard class="w-5 h-5 text-[#A65F4C]" />
+            Datos para transferencia bancaria:
+          </p>
+
+          <div class="space-y-3 text-base text-slate-700">
+            <div class="flex justify-between border-b border-slate-200/60 pb-2">
+              <span class="text-slate-500 font-medium">Banco:</span>
+              <span class="font-bold text-slate-800">{BANK.banco}</span>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero colaborar</h3>
-            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
-              Para realizar una donación libre y voluntaria.
-            </p>
-            <a href="#datos-transferencia" class="mt-6 inline-flex items-center justify-center gap-2 bg-[#A65F4C] text-white hover:bg-[#DD8574] text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer btn-shine">
-              <span>Quiero colaborar</span>
-              <ArrowRight class="w-5 h-5" />
-            </a>
-          </div>
-
-          <!-- Opción 2: Quiero ser embajador/a -->
-          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
-            <div class="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-[#A65F4C] mb-5">
-              <Users class="w-7 h-7" />
+            <div class="flex justify-between border-b border-slate-200/60 pb-2">
+              <span class="text-slate-500 font-medium">Titular:</span>
+              <span class="font-bold text-slate-800">{BANK.titular}</span>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero ser embajador/a</h3>
-            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
-              Para quienes desean acompañar activamente el crecimiento del proyecto y formar parte de nuestra comunidad de colaboradores.
-            </p>
-            <a href="#datos-transferencia" class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
-              <span>Quiero ser embajador/a</span>
-              <ArrowRight class="w-5 h-5" />
-            </a>
-          </div>
-
-          <!-- Opción 3: Quiero asociarme -->
-          <div class="bg-white rounded-3xl p-8 border border-[#A65F4C]/10 shadow-sm hover:shadow-md hover:border-[#A65F4C]/20 hover:-translate-y-1 transition-all duration-300 flex flex-col text-left">
-            <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-[#A65F4C] mb-5">
-              <Building class="w-7 h-7" />
+            <div class="flex justify-between border-b border-slate-200/60 pb-2">
+              <span class="text-slate-500 font-medium">CUIT:</span>
+              <span class="font-bold text-slate-800">{BANK.cuit}</span>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">Quiero asociarme</h3>
-            <p class="text-slate-600 text-lg leading-relaxed font-light flex-1">
-              Para personas, organizaciones o futuras empresas interesadas en acompañar de forma periódica el desarrollo de Puentes de Papel.
-            </p>
-            <a href="/instituciones-residencias/" class="mt-6 inline-flex items-center justify-center gap-2 bg-white text-[#A65F4C] border-2 border-[#A65F4C]/20 hover:border-[#A65F4C]/40 text-base font-bold px-6 py-3 rounded-full hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
-              <span>Quiero asociarme</span>
-              <ArrowRight class="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-
-        <!-- Datos de Transferencia Bancaria -->
-        <div class="max-w-xl mx-auto">
-          <div id="datos-transferencia" class="p-8 bg-white border border-[#A65F4C]/10 rounded-3xl text-left w-full shadow-sm scroll-mt-24">
-            <p class="text-base font-bold text-slate-800 mb-5 flex items-center gap-2">
-              <CreditCard class="w-5 h-5 text-[#A65F4C]" />
-              Datos para transferencia bancaria:
-            </p>
-
-            <div class="space-y-3 text-base text-slate-700">
-              <div class="flex justify-between border-b border-slate-200/60 pb-2">
-                <span class="text-slate-500 font-medium">Banco:</span>
-                <span class="font-bold text-slate-800">{BANK.banco}</span>
+            <div class="flex justify-between border-b border-slate-200/60 pb-2">
+              <span class="text-slate-500 font-medium">Nº de Cuenta:</span>
+              <span class="font-bold text-slate-800">{BANK.cuenta}</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
+              <span class="text-slate-500 font-medium">Alias:</span>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-800 font-mono select-all">{BANK.alias}</span>
+                <button
+                  class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
+                  onclick={`const btn=this; navigator.clipboard.writeText('${BANK.alias}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
+                >
+                  Copiar
+                </button>
               </div>
-              <div class="flex justify-between border-b border-slate-200/60 pb-2">
-                <span class="text-slate-500 font-medium">Titular:</span>
-                <span class="font-bold text-slate-800">{BANK.titular}</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-200/60 pb-2">
-                <span class="text-slate-500 font-medium">CUIT:</span>
-                <span class="font-bold text-slate-800">{BANK.cuit}</span>
-              </div>
-              <div class="flex justify-between border-b border-slate-200/60 pb-2">
-                <span class="text-slate-500 font-medium">Nº de Cuenta:</span>
-                <span class="font-bold text-slate-800">{BANK.cuenta}</span>
-              </div>
-              <div class="flex justify-between items-center border-b border-slate-200/60 pb-2">
-                <span class="text-slate-500 font-medium">Alias:</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold text-slate-800 font-mono select-all">{BANK.alias}</span>
-                  <button
-                    class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
-                    onclick={`const btn=this; navigator.clipboard.writeText('${BANK.alias}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
-                  >
-                    Copiar
-                  </button>
-                </div>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-slate-500 font-medium">CBU:</span>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold text-slate-800 font-mono text-xs truncate max-w-[130px] select-all" title={BANK.cbu}>{BANK.cbu}</span>
-                  <button
-                    class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
-                    onclick={`const btn=this; navigator.clipboard.writeText('${BANK.cbu}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
-                  >
-                    Copiar
-                  </button>
-                </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500 font-medium">CBU:</span>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-800 font-mono text-xs truncate max-w-[130px] select-all" title={BANK.cbu}>{BANK.cbu}</span>
+                <button
+                  class="text-xs font-bold text-[#A65F4C] hover:text-[#DD8574] border border-[#A65F4C]/20 px-2 py-0.5 rounded bg-white transition-colors cursor-pointer"
+                  onclick={`const btn=this; navigator.clipboard.writeText('${BANK.cbu}').then(() => { btn.innerText = '¡Copiado!'; btn.classList.add('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.remove('text-[#A65F4C]', 'border-[#A65F4C]/20'); setTimeout(() => { btn.innerText = 'Copiar'; btn.classList.remove('bg-green-50', 'text-green-600', 'border-green-300'); btn.classList.add('text-[#A65F4C]', 'border-[#A65F4C]/20'); }, 2000); })`}
+                >
+                  Copiar
+                </button>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -320,29 +403,12 @@ const faqs = [
       faqs={faqs}
     >
       ¿Te quedó otra duda?{' '}
-      <a href="/sobre-el-proyecto/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé el proyecto en detalle</a>{' '}
+      <a href="/sobre-el-proyecto/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">Conocé el proyecto en detalle</a>,{' '}
+      mirá las{' '}
+      <a href="/noticias/" class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">últimas noticias</a>{' '}
       o escribinos a{' '}
       <a href={CONTACT.emailHref} class="font-bold text-[#A65F4C] hover:text-[#DD8574] transition-colors underline decoration-2 underline-offset-4">{CONTACT.email}</a>.
     </Faq>
-
-    <!-- --- Interlinking: instituciones --- -->
-    <section class="py-20 bg-white">
-      <div class="container mx-auto px-6 sm:px-8 lg:px-12 max-w-4xl">
-        <div class="bg-[#F2EADD]/50 border border-[#A65F4C]/10 rounded-[2.5rem] p-8 md:p-12 text-center">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-white border border-[#A65F4C]/10 flex items-center justify-center text-[#A65F4C] mb-5">
-            <Sparkles class="w-7 h-7" />
-          </div>
-          <h2 class="text-3xl font-black text-slate-900 mb-4">¿Representás una empresa, residencia o institución?</h2>
-          <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Hay formas específicas de colaborar y trabajar junto a nosotros desde el ámbito institucional.
-          </p>
-          <a href="/instituciones-residencias/" class="inline-flex items-center gap-2 bg-[#A65F4C] text-white font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300 btn-shine">
-            Ver opciones para instituciones
-            <ArrowRight class="w-5 h-5" />
-          </a>
-        </div>
-      </div>
-    </section>
 
   </div>
 </BaseLayout>
